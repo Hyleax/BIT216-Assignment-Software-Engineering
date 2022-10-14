@@ -12,18 +12,18 @@
         crossorigin="anonymous"
     >
 </head>
-<body class="bg-success">
+<body style="background: linear-gradient(to right, rgb(182, 244, 146), rgb(51, 139, 147));">
 <section>
   <div class="mask d-flex align-items-center mt-5">
     <div class="container h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-          <div class="card bg-dark" style="border-radius: 15px;">
+          <div class="card bg-dark mb-5" style="border-radius: 15px;">
             <div class="card-body p-5">
               <h2 class="text-uppercase text-center text-success mb-4">Register as a Volunteer</h2>
               <span id="empty-values"></span>
 
-              <form class="text-light" action = "includes/registerVolunteerValidation.inc.php" method = "POST">
+              <form class="text-light fw-bold" action = "includes/registerVolunteerValidation.inc.php" method = "POST">
 
                 <div class="form-outline mb-2">
                     <label class="form-label" for="username">Username</label> <span></span>
@@ -71,7 +71,7 @@
                 <div class="d-flex justify-content-center">
                   <button 
                     type="submit"
-                    class="btn btn-success gradient-custom-4 text-body form-control"
+                    class="btn btn-success fw-bold text-light form-control"
                     id="volunteerRegister-btn"
                     name = "volunteerRegister-btn">
                       Register
@@ -79,11 +79,44 @@
                     <span id="redirecting-message"></span>
                 </div>
 
-                <p class="text-center text-mute mt-3 mb-0">Have already an account? <a href="login.php"
+                <div class = "d-flex justify-content-center text-danger fw-bold mt-3">
+              <?php
+                if (isset($_GET["error"])){
+                  
+                  if ($_GET["error"] == "emptyfields"){
+                    echo "<p>Fill in all fields!</p>";
+                  }
+                  
+                  else if ($_GET["error"] == "emailinvalid"){
+                    echo "<p>Email is invalid</p>";
+                  }
+                  
+                  else if($_GET["error"] == "passwordweak"){
+                    echo "<p>Your password is too weak</p>";
+                  }
+
+                  else if($_GET["error"] == "passwordwrong"){
+                    echo "<p>Password is not the same</p>";
+                  }
+
+                  else if($_GET["error"] == "usernametaken"){
+                    echo "<p>This username is already taken</p>";
+                  }
+
+                  else if($_GET["error"] == "sqlerror"){
+                    echo "<p>Something went wrong, please try again</p>";
+                  }
+                  else if($_GET["error"] == ""){
+                    echo "<p>You have successfully signed up</p>";
+                  }
+                }
+              ?>
+              </div>
+
+                <p class="text-center text-mute mt-3">Have already an account? <a href="login.php"
                     class="fw-bold text-primary"><u>Login here</u></a></p>
 
               </form>
-
             </div>
           </div>
         </div>
@@ -92,7 +125,7 @@
   </div>
 </section>
 
-    
+  
 
 
 <!-- JavaScript Bundle with Popper -->
