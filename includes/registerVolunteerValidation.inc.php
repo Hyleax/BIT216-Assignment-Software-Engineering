@@ -5,7 +5,7 @@ if (isset($_POST['volunteerRegister-btn'])) {
     
         // require is used when the file is mandatory for the application
         require 'dbh.inc.php';
-        require 'functions.inc.php';
+        require 'volunteerFunctions.inc.php';
         // collecting the variables from registerVolunteer.php
         $username = $_POST['username'];
         $fullName = $_POST['fullname'];
