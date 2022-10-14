@@ -12,13 +12,13 @@ if(isset($_POST["registerSchool-btn"])){
 
     if(emptyInputRegisterSchool($schoolName, $schoolAddress, $schoolCity) != false){
         //if is empty return back to registerSchool page
-        header("location: registerSchool.php?error=emptyInput");
+        header("location: ../registerSchool.php?error=emptyInput");
         exit();
     }
 
     if(schoolNameExist($con, $schoolName) != false){
         //if is empty return back to registerSchool page
-        header("location: registerSchool.php?error=schoolNameTaken");
+        header("location: ../registerSchool.php?error=schoolNameTaken");
         exit();
     }
 
@@ -26,5 +26,5 @@ if(isset($_POST["registerSchool-btn"])){
     
 }
 else{
-    header("location: registerSchool.php");
+    header("location: ../registerSchool.php");
 }
