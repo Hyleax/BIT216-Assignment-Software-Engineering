@@ -1,3 +1,59 @@
+<?php
+session_start();
+
+include("connection.php");
+
+if($_SERVER['REQUEST_METHOD'] == "POST"){
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+
+    if(!empty($username) && !empty($password)){
+        $querySA = "select * from schooladministrator WHERE username='$username'";
+        $queryV = "select * from volunteer WHERE username='$username'";
+        $resultSA = mysqli_query($con, $querySA);
+        $resultV = mysqli_query($con, $queryV);
+
+        if($resultSA){
+            
+            if($resultSA && mysqli_num_rows($resultSA) > 0){
+                $user_data = mysqli_fetch_assoc($resultSA);
+            
+                if($user_data["password"] === $password && $user_data["position"] === "Super Admin"){
+                    $_SESSION["username"] = $user_data["username"];
+                    //change to the super admin page
+                    header("location: test.html");
+                    die;
+                }
+                else if($user_data["password"] === $password && $user_data["position"] !== "Super Admin"){
+                    $_SESSION["username"] = $user_data["username"];
+                    //change to the school admin page
+                    header("location: test.html");
+                    die;
+                }
+            }
+        }
+        if($resultV){
+            
+            if($resultV && mysqli_num_rows($resultV) > 0){
+                $user_data = mysqli_fetch_assoc($resultV);
+
+                if($user_data["password"] === $password){
+                    $_SESSION["username"] = $user_data["username"];
+                    //change to the volunteer page
+                    header("location: test1.html");
+                    die;
+                }
+            }
+        }
+    }
+    else{
+        echo '<script language="javascript">';
+        echo 'alert("Please enter valid Username")';
+        echo '</script>';
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
