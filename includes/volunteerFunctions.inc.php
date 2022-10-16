@@ -1,6 +1,6 @@
 <?php
 
-// if return true means input is empty
+// check if register volunteer input fields are empty
 function volunteerRegistrationEmpty($username, $fullName, $phoneNumber, $occupation,$birthdate, $email, $password, $confirmPassword){
     $result;
     if (empty($username) || empty($fullName) || 
@@ -15,6 +15,7 @@ function volunteerRegistrationEmpty($username, $fullName, $phoneNumber, $occupat
     return $result;
 }
 
+//  check if password and confirmPassword are the same
 function confirmPassword($password, $confirmPassword){
     $result;
     if ($password !== $confirmPassword){
@@ -26,6 +27,7 @@ function confirmPassword($password, $confirmPassword){
     return $result;
 }
 
+// check if a password is strong enough
 function testPasswordStrength($password){
     $passwordIsWeak;
     if (strlen($password) <= 8 && !(!ctype_lower($password))){
@@ -37,6 +39,7 @@ function testPasswordStrength($password){
     return $passwordIsWeak;
 }
 
+// check if a given email is valid
 function testEmailValid($email){
     $result;
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
@@ -48,6 +51,7 @@ function testEmailValid($email){
     return $result;
 }
 
+// check if a given username exists in the DB
 function testUsernameExists($conn, $username){
     $sql = "SELECT username FROM volunteer WHERE username=?";
     
@@ -76,7 +80,7 @@ function testUsernameExists($conn, $username){
         mysqli_stmt_close($stmt);
 }
 
-
+// creates a volunteer and adds them to the DB
 function createVolunteer($conn, $username, $fullName, $phoneNumber, $occupation,$birthdate, $email, $password, $confirmPassword){
     $sql = "INSERT INTO volunteer (volunteerID, username, password, fullName, phoneNumber, occupation, dateOfBirth, email) VALUES (?,?,?,?,?,?,?,?)";
 
