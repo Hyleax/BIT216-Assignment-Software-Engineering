@@ -9,7 +9,7 @@ if (isset($_POST['volunteerRegister-btn'])) {
         // collecting the variables from registerVolunteer.php
         $username = $_POST['username'];
         $fullName = $_POST['fullname'];
-        $phoneNumber = $_POST['username'];
+        $phoneNumber = $_POST['phoneNumber'];
         $occupation = $_POST['occupation'];
         $birthdate = $_POST['birthdate'];
         $email = $_POST['email'];
@@ -32,7 +32,7 @@ if (isset($_POST['volunteerRegister-btn'])) {
 
         // check if password is strong enough
         if(testPasswordStrength($password)) {
-            header("Location: ../registerVolunteer.php?error=passworkweak&username=".$username."&fullname=".$fullName."&phoneNumber=".$phoneNumber."&occupation=".$occupation."&birthdate=".$birthdate."&email=".$email);
+            header("Location: ../registerVolunteer.php?error=passwordweak&username=".$username."&fullname=".$fullName."&phoneNumber=".$phoneNumber."&occupation=".$occupation."&birthdate=".$birthdate."&email=".$email);
             exit();
         }
 

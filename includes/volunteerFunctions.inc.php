@@ -30,7 +30,7 @@ function confirmPassword($password, $confirmPassword){
 // check if a password is strong enough
 function testPasswordStrength($password){
     $passwordIsWeak;
-    if (strlen($password) <= 8 && !(!ctype_lower($password))){
+    if (strlen($password) <= 8){
         $passwordIsWeak = true;
     }
     else{

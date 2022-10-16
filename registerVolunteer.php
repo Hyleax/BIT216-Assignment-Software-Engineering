@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,32 +29,61 @@
 
                 <div class="form-outline mb-2">
                     <label class="form-label" for="username">Username</label> <span></span>
-                    <input type="text" id="username" name="username" class="form-control form-control-sm" />
+                    <input 
+                      type="text" 
+                      id="username" 
+                      name="username" 
+                      class="form-control form-control-sm"
+
+                      <?php if (isset($_GET["username"])) {?>
+                      value = "<?php echo $_GET["username"] ?>"
+                      <?php } ?>
+                    />
                 </div>
 
                 <div class="form-outline mb-2">
                     <label class="form-label" for="fullname">Full Name</label> <span></span>
-                    <input type="text" id="fullname" name="fullname" class="form-control form-control-sm" />
+                    <input type="text" id="fullname" name="fullname" class="form-control form-control-sm" 
+                    <?php if (isset($_GET["fullname"])) {?>
+                      value = "<?php echo $_GET["fullname"] ?>"
+                      <?php } ?>
+                    />
                 </div>
  
                 <div class="form-outline mb-2">
                     <label class="form-label" for="phoneNumber">Phone Number</label> <span></span>
-                    <input type="tel" id="phoneNumber" name="phoneNumber" class="form-control form-control-sm" />
+                    <input type="tel" id="phoneNumber" name="phoneNumber" class="form-control form-control-sm" 
+                    <?php if (isset($_GET["phoneNumber"])) {?>
+                      value = "<?php echo $_GET["phoneNumber"] ?>"
+                      <?php } ?>
+                    />
                 </div>
 
                 <div class="form-outline mb-2">
                     <label class="form-label" for="occupation">Occupation</label> <span></span>
-                    <input type="text" id="occupation" name="occupation" class="form-control form-control-sm" />
+                    <input type="text" id="occupation" name="occupation" class="form-control form-control-sm" 
+                    <?php if (isset($_GET["occupation"])) {?>
+                      value = "<?php echo $_GET["occupation"] ?>"
+                      <?php } ?>
+                    />
                 </div>
 
                 <div class="form-outline mb-2">
                     <label class="form-label" for="birthdate">Date of birth</label> <span></span>
-                    <input type="date" id="birthdate" name="birthdate" class="form-control form-control-sm" />
+                    <input type="date" id="birthdate" name="birthdate" class="form-control form-control-sm" 
+                    <?php if (isset($_GET["birthdate"])) {?>
+                      value = "<?php echo $_GET["birthdate"] ?>"
+                      <?php } ?>
+                    />
                 </div>
 
                 <div class="form-outline mb-2">
                     <label class="form-label" for="email">Your Email</label> <span></span>
-                    <input type="email" id="email" name="email" class="form-control form-control-sm" />
+                    <input type="email" id="email" name="email" class="form-control form-control-sm" 
+                    <?php if (isset($_GET["email"])) {?>
+                      value = "<?php echo $_GET["email"] ?>"
+                      <?php } ?>
+                    />
                 </div>
 
                 <div class="form-outline mb-2">
