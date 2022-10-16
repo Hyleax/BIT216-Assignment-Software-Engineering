@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>change password</title>
+    <title>ColTeach Volunteer Profile</title>
     <link 
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" 
         rel="stylesheet" 
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" 
         crossorigin="anonymous"
     >
+    <link rel="stylesheet" href="css/volunteerProfile.css">
 </head>
-<body style="background-color: #50C878;">
+
+<body style="background-color: #679267;">
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">
@@ -66,6 +68,7 @@
         class="d-flex flex-column align-items-center pt-5"
         id="picture-container"
         >
+        <h2 class="text-light fw-bold mb-4"><u>Edit Volunteer Profile</u></h2>
       <img 
         src="images/normanPic.jpg" 
         alt="profile picture" 
@@ -79,7 +82,6 @@
 
       <!--Profile Information container-->
       <main class="container-fluid mb-5 rounded p-3 d-flex flex-column align-items-center">    
-        <h2 class="text-light fw-bold bg-dark py-2 px-3 mb-4 rounded-pill">Norman Yap Teik-Wei</h2> 
             <div 
                 class=" bg-dark rounded px-5 pt-5 text-light shadow p-3"
                 style="width: 400px;"    
@@ -87,27 +89,37 @@
                <form action="changePassword.html" class="fw-bold" method="post">
 
                 <div class="form-outline mb-4">
-                    <label class="form-label" for="oldPassword">Old Password</label> <span></span>
-                    <input type="text" id="oldPassword" name="oldPassword" class="form-control form-control-md" />
+                    <label class="form-label" for="fullname">Name</label> <span></span>
+                    <input type="text" id="fullname" name="fullname" class="form-control form-control-md" />
                 </div>
 
                 <div class="form-outline mb-4">
-                    <label class="form-label" for="newPassword">New password</label> <span></span>
-                    <input type="text" id="newPassword" name="newPassword" class="form-control form-control-md" />
+                    <label class="form-label" for="dob">Date of Birth</label> <span></span>
+                    <input type="date" id="dob" name="dob" class="form-control form-control-md" />
                 </div>
 
                 <div class="form-outline mb-4 pb-2">
-                    <label class="form-label" for="confirmPassword">Confirm Password</label> <span></span>
-                    <input type="text" id="confirmPassword" name="confirmPassword" class="form-control form-control-md" />
+                    <label class="form-label" for="occupation">Occupation</label> <span></span>
+                    <input type="text" id="occupation" name="occupation" class="form-control form-control-md" />
+                </div>
+
+                <div class="form-outline mb-4 pb-2">
+                    <label class="form-label" for="phoneNumber">Phone Number</label> <span></span>
+                    <input type="tel" id="phoneNumber" name="phoneNumber" class="form-control form-control-md" />
+                </div>
+
+                <div class="form-outline mb-4 pb-2">
+                    <label class="form-label" for="email">email</label> <span></span>
+                    <input type="email" id="email" name="email" class="form-control form-control-md" />
                 </div>
 
                 <div class="d-flex justify-content-center mt-3 mb-4">
                     <button 
                       type="submit"
                       class="btn btn-success fw-bold text-light form-control"
-                      id="changePassword-btn"
-                      name = "changePassword-btn">
-                        Change Password
+                      id="editVolunteerProfile-btn"
+                      name = "editVolunteerProfile-btn">
+                        Confirm Information
                     </button>
                       <span id="redirecting-message"></span>
                   </div>
@@ -126,11 +138,13 @@
         <!-- Copyright -->
       </footer>
 
- <!-- JavaScript Bundle with Popper -->
-<script 
+    <script src="javascript/volunteerProfile.js"></script>
+
+                <!-- JavaScript Bundle with Popper -->
+    <script 
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" 
     crossorigin="anonymous">
-</script>
+    </script>
 </body>
 </html>
