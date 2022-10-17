@@ -9,7 +9,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     $password = $_POST["password"];
 
     //
-    if(!empty($username) && !empty($password)){
+    if (empty($username) || empty($password)){
+        header("location: login.php?error=emptyfields");
+        exit();
+    }
+
+    else if(!empty($username) && !empty($password)){
         //select all data from from schooladministrator table where username is equal to username input field
         $querySA = "SELECT * FROM schooladministrator WHERE username='$username' AND position<>'Super Admin';";
         //select all data from from schooladministrator table where username is equal to username input field
@@ -42,9 +47,13 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                         //change to the school admin page
                         header("location: schoolAdmin.php");
                         die;
-                    }
+                }
+                else {
+                    header("location: login.php?error=incorrectpassword");
+                    die;
                 }
             }
+        }
         //if resultV is true
         if($resultV){
             //if resultV is true and the number of data row is more than 0
@@ -59,13 +68,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                     header("location: volunteerProfile.php");
                     die;
                 }
+                else {
+                    header("location: login.php?error=incorrectpassword&username=$username");
+                    die;
+                }
             }
-        }
-    }
-    else{
-        echo '<script language="javascript">';
-        echo 'alert("Please enter valid Username")';
-        echo '</script>';
+        }    
     }
 }
 ?>
@@ -96,7 +104,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         <div class="global-container">
             <div class="card login-form">
                 <div class="card-body">
-                    <a href="index.html">
+                    <a href="index.php">
                         <img src="images/ColTeach.png" alt="ColTeach logo" style="width: 50%;display: block; height: 50%; margin-left: auto; margin-right: auto;">
                     </a>
                     <h1 class="text-success text-center my-5">LOGIN</h1>
@@ -108,7 +116,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                                     type="text" 
                                     class="form-control form-control-sm"
                                     id="loginUsername"
-                                    name="username"/>
+                                    name="username"
+                                <?php if (isset($_GET["username"])) {?>
+                                    value = "<?php echo $_GET["username"] ?>"
+                                <?php } ?>
+                                />
                             </div>
 
                             <div class="form-group">
@@ -120,9 +132,19 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                                     id="loginPassword"
                                     name="password"/>
                             </div>
-
                             <button type="submit" class="btn btn-primary btn-block" name="submit">Sign In</button>
-
+                            <div class = "d-flex justify-content-center text-danger fw-bold mt-3">
+                            <?php
+                                if (isset($_GET["error"])){
+                                    if ($_GET["error"] === "emptyfields"){
+                                        echo "<p>Please fill up all fields</p>";
+                                    }
+                                    else if ($_GET["error"] === "incorrectpassword"){
+                                        echo "<p>Password is incorrect!</p>";
+                                    }
+                                }
+                            ?>
+                            </div>
                             <div class="signup">
                                 Don't have an account? <a href="registerVolunteer.php">Create One</a>
                             </div>
