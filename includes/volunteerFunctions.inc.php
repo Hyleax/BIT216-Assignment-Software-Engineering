@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * 
+ *  FUNCTIONS FOR VOLUNTEER REGISTRATION
+ * 
+ */
 // check if register volunteer input fields are empty
 function volunteerRegistrationEmpty($username, $fullName, $phoneNumber, $occupation,$birthdate, $email, $password, $confirmPassword){
     $result;
@@ -108,3 +113,104 @@ function createVolunteer($conn, $username, $fullName, $phoneNumber, $occupation,
             exit();
     }
 }
+
+/**
+ * 
+ * FUNCTIONS FOR EDITING VOLUNTEER PROFILE
+ * 
+ * 
+ */
+
+ // check if fields are empty
+ function checkEditVolunteerProfileEmpty($fullName, $phoneNumber, $occupation, $birthdate, $email){
+    $result;
+
+    if (empty($fullName) || empty($phoneNumber) || empty($occupation) || empty($birthdate) || empty($email)){
+        $result = true;
+    }
+    else {
+        $result = false;
+    }
+    return $result;
+ }
+
+
+ // update volunteer profile
+ function updateVolunteerInformation($conn, $fullName, $phoneNumber, $occupation, $birthdate, $email){
+    $sql = "UPDATE volunteer SET fullName=?, phoneNumber=?, occupation=?, dateOfBirth=?, email=? WHERE username =\"Norman\"";
+
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("Location: ../editVolunteerProfile.php?error=sqlerror");
+        exit();
+    }
+    else {                        
+        mysqli_stmt_bind_param($stmt,
+            "sssss", $fullName, $phoneNumber, 
+            $occupation, $birthdate, $email);
+            mysqli_stmt_execute($stmt);
+                        
+            header("Location: ../volunteerProfile.php?editprofile=success");
+            exit();
+    }
+ }
+
+
+
+ /**
+  * FUNCTIONS FOR CHANGING VOLUNTEER PASSWORD 
+ *
+  */
+  // check if fields in change volunteer password are empty
+  function checkPasswordFieldsEmpty($oldPassword, $newPassword, $confirmPassword){
+    $result;
+    if (empty($oldPassword) || empty($newPassword) || empty($confirmPassword)){
+        $result = true;
+    }
+    else{
+        $result = false;
+    }
+    return $result;
+  }
+
+
+  // check if user has the same password in the DB
+  function checkPasswordInDB($conn, $oldPassword){
+    $status;
+    $sql = "SELECT * FROM volunteer WHERE username = \"Norman\"";
+    $result = mysqli_query($conn, $sql);
+    $volunteerData = mysqli_fetch_assoc($result);
+    $hashedDBPassword = $volunteerData['password'];
+    if (!password_verify($oldPassword, $hashedDBPassword)){
+        $status = true;
+    }
+    else{
+        $status = false;
+    }
+    return $status;
+  }
+
+
+  // change a users password
+  function changePassword($conn, $newPassword){
+    $sql = "UPDATE volunteer SET password=? WHERE username =\"Norman\"";
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("Location: ../changePassword.php?error=sqlerror");
+        exit();
+    }
+    else {
+
+        // hash password to prevent hackers from uncovering it
+        $hashedPassword = password_hash($newPassword, PASSWORD_BCRYPT);
+                        
+        mysqli_stmt_bind_param($stmt,
+            "s", $hashedPassword);
+            mysqli_stmt_execute($stmt);
+                        
+            header("Location: ../volunteerProfile.php?changepassword=success");
+            exit();
+    }
+  }
