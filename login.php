@@ -11,15 +11,23 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     //
     if(!empty($username) && !empty($password)){
         //select all data from from schooladministrator table where username is equal to username input field
-        $querySA = "select * from schooladministrator WHERE username='$username'";
+        $querySA = "SELECT * FROM schooladministrator WHERE username='$username' AND position<>'Super Admin';";
         //select all data from from schooladministrator table where username is equal to username input field
         $queryV = "select * from volunteer WHERE username='$username'";
 
-        //get data from database and store it (schooladministrator table)
+        //get school administrator data from database and store it (schooladministrator table)
         $resultSA = mysqli_query($con, $querySA);
 
-        //get data from database and store it (volunteer table)
+        //get volunteer data from database and store it (volunteer table)
         $resultV = mysqli_query($con, $queryV);
+
+
+        //if username and password are same as condition below
+        if($username === "superadmin" && $password === "SuperAdmin"){
+            //redirect user to super admin page
+            header("location: superAdmin.php");
+            die;
+        }
 
         //if resultSA is true
         if($resultSA){
@@ -28,26 +36,15 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                 //fetch the data and store is user_data
                 $user_data = mysqli_fetch_assoc($resultSA);
             
-                //if user_data's password equal password input and position equal to Super Admin
-                if($user_data["password"] === $password){
-                    if($user_data["position"] === "Super Admin"){
-                        $_SESSION["username"] = $user_data["username"];
-                        //change to the super admin page
-                        header("location: superAdmin.html");
-                        die;
-                    }
-                }
                 //if user_data's password equal password input and position not equal to Super Admin
-                else if($user_data["password"] === $password){
-                    if($user_data["position"] !== "Super Admin"){
+                if($user_data["password"] === $password){
                         $_SESSION["username"] = $user_data["username"];
                         //change to the school admin page
-                        header("location: schoolAdmin.html");
+                        header("location: schoolAdmin.php");
                         die;
                     }
                 }
             }
-        }
         //if resultV is true
         if($resultV){
             //if resultV is true and the number of data row is more than 0
@@ -115,7 +112,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
                             <div class="form-group">
                                 <label for="exmapleInputPassword1"> Password</label>
-                                <a href="forgetPassword.php" style="float: right; font-size: 12px">Forgot Password?</a>
+                                <a href="#" style="float: right; font-size: 12px">Forgot Password?</a>
                                 <input 
                                     type="password" 
                                     class="form-control form-control-sm"
