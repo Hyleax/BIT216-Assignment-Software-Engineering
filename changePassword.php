@@ -61,7 +61,7 @@
                   Options
                 </a>
                 <ul class="dropdown-menu dropdown-menu-lg-end dropdown-menu-dark">
-                    <li><a class="dropdown-item" href="#">Log out</a></li>
+                    <li><a class="dropdown-item" href="includes/logout.inc.php">Log out</a></li>
                   </ul>
             </div>
 
@@ -88,7 +88,7 @@
 
       <!--Profile Information container-->
       <main class="container-fluid mb-5 rounded p-3 d-flex flex-column align-items-center">    
-        <h2 class="text-light fw-bold bg-dark py-2 px-3 mb-4 rounded-pill">Norman Yap Teik-Wei</h2> 
+        <h2 class="text-light fw-bold bg-dark py-2 px-3 mb-4 rounded-pill"><?php echo $fullName?></h2> 
             <div 
                 class=" bg-dark rounded px-5 pt-5 text-light shadow p-3"
                 style="width: 400px;"    
@@ -131,7 +131,7 @@
                               echo "<p>Your old password is wrong</p>";
                             }
                             
-                            else if($_GET["error"] == "passwordweak"){
+                            else if($_GET["error"] == "passwordtooweak"){
                               echo "<p>Your new password is too weak</p>";
                             }
 

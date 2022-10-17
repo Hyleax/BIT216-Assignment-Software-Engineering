@@ -57,11 +57,11 @@ function testEmailValid($email){
 }
 
 // check if a given username exists in the DB
-function testUsernameExists($conn, $username){
+function testUsernameExists($con, $username){
     $sql = "SELECT username FROM volunteer WHERE username=?";
     
     // initializes a prepared statement
-        $stmt = mysqli_stmt_init($conn);
+        $stmt = mysqli_stmt_init($con);
             
         if (!mysqli_stmt_prepare($stmt, $sql)) {
             header("Location: ../registerVolunteer.php?error=sqlerror");
@@ -86,10 +86,10 @@ function testUsernameExists($conn, $username){
 }
 
 // creates a volunteer and adds them to the DB
-function createVolunteer($conn, $username, $fullName, $phoneNumber, $occupation,$birthdate, $email, $password, $confirmPassword){
-    $sql = "INSERT INTO volunteer (volunteerID, username, password, fullName, phoneNumber, occupation, dateOfBirth, email) VALUES (?,?,?,?,?,?,?,?)";
+function createVolunteer($con, $username, $fullName, $phoneNumber, $occupation,$birthdate, $email, $password, $confirmPassword){
+    $sql = "INSERT INTO volunteer (volunteerID, username, password, fullname, phoneNum, occupation, dateOfBirth, email) VALUES (?,?,?,?,?,?,?,?)";
 
-    $stmt = mysqli_stmt_init($conn);
+    $stmt = mysqli_stmt_init($con);
 
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("Location: ../registerVolunteer.php?error=sqlerror");
@@ -137,7 +137,7 @@ function createVolunteer($conn, $username, $fullName, $phoneNumber, $occupation,
 
  // update volunteer profile
  function updateVolunteerInformation($conn, $fullName, $phoneNumber, $occupation, $birthdate, $email){
-    $sql = "UPDATE volunteer SET fullName=?, phoneNumber=?, occupation=?, dateOfBirth=?, email=? WHERE username =\"Norman\"";
+    $sql = "UPDATE volunteer SET fullname=?, phoneNum=?, occupation=?, dateOfBirth=?, email=? WHERE username = '".$_SESSION['username']."'";
 
     $stmt = mysqli_stmt_init($conn);
 
@@ -178,7 +178,7 @@ function createVolunteer($conn, $username, $fullName, $phoneNumber, $occupation,
   // check if user has the same password in the DB
   function checkPasswordInDB($conn, $oldPassword){
     $status;
-    $sql = "SELECT * FROM volunteer WHERE username = \"Norman\"";
+    $sql = "SELECT * FROM volunteer WHERE username = '".$_SESSION['username']."'";
     $result = mysqli_query($conn, $sql);
     $volunteerData = mysqli_fetch_assoc($result);
     $hashedDBPassword = $volunteerData['password'];
@@ -194,7 +194,7 @@ function createVolunteer($conn, $username, $fullName, $phoneNumber, $occupation,
 
   // change a users password
   function changePassword($conn, $newPassword){
-    $sql = "UPDATE volunteer SET password=? WHERE username =\"Norman\"";
+    $sql = "UPDATE volunteer SET password=? WHERE username = '".$_SESSION['username']."'";
     $stmt = mysqli_stmt_init($conn);
 
     if (!mysqli_stmt_prepare($stmt, $sql)) {

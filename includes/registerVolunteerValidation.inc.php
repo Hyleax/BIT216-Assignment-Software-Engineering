@@ -4,7 +4,7 @@
 if (isset($_POST['volunteerRegister-btn'])) {
     
         // require is used when the file is mandatory for the application
-        require 'dbh.inc.php';
+        require 'connection.php';
         require 'volunteerFunctions.inc.php';
         // collecting the variables from registerVolunteer.php
         $username = $_POST['username'];
@@ -43,18 +43,18 @@ if (isset($_POST['volunteerRegister-btn'])) {
         }
 
         // check if username is already taken
-        if (testUsernameExists($conn, $username)) {
+        if (testUsernameExists($con, $username)) {
             header("Location: ../registerVolunteer.php?error=usernametaken&fullname=".$fullName."&phoneNumber=".$phoneNumber."&occupation=".$occupation."&birthdate=".$birthdate."&email=".$email);
             exit();
         }
 
-        createVolunteer($conn, $username, $fullName, $phoneNumber, $occupation,$birthdate, $email, $password, $confirmPassword);
+        createVolunteer($con, $username, $fullName, $phoneNumber, $occupation,$birthdate, $email, $password, $confirmPassword);
 
         //  close statement
         mysqli_stmt_close($stmt);
 
         // close connection to the DB
-        mysqli_close($conn);
+        mysqli_close($con);
 }
 
 // if a user does mot access the file by natural means

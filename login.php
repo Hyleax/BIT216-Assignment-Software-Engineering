@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include("connection.php");
+require_once 'includes/connection.php';
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
     //get input from user
@@ -51,11 +51,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             if($resultV && mysqli_num_rows($resultV) > 0){
                 $user_data = mysqli_fetch_assoc($resultV);
 
+                $hashedDBPassword = $user_data["password"];
                 //if user_data's password equal password input
-                if($user_data["password"] === $password){
+                if(password_verify($password, $hashedDBPassword)){
                     $_SESSION["username"] = $user_data["username"];
                     //change to the volunteer page
-                    header("location: volunteerProfile.html");
+                    header("location: volunteerProfile.php");
                     die;
                 }
             }

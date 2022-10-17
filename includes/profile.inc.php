@@ -1,5 +1,5 @@
 <?php
-require 'dbh.inc.php';
+require 'connection.php';
 //THIS file can be used by BOTH VOLUNTEER AND SCHOOL ADMIN
 
 // this variable will differ depending if a user is a volunteer or school admin
@@ -18,8 +18,8 @@ $age;
 
 
 // check if username is in the volunteer table 
-$volunteerQuery = "SELECT * FROM volunteer WHERE username = \"Norman\"";
-$volunteerResult = mysqli_query($conn, $volunteerQuery);
+$volunteerQuery = "SELECT * FROM volunteer WHERE username = '".$_SESSION['username']."'";
+$volunteerResult = mysqli_query($con, $volunteerQuery);
 
 
 
@@ -29,11 +29,11 @@ if (mysqli_num_rows($volunteerResult) > 0) {
     }
 
     foreach($data as $v){
-        $fullName = $v['fullName'];
+        $fullName = $v['fullname'];
         $birthdate = $v['dateOfBirth'];
         $occupation = $v['occupation'];
         $email = $v['email'];
-        $phoneNumber = $v['phoneNumber'];
+        $phoneNumber = $v['phoneNum'];
     }
 
     // get system date

@@ -5,7 +5,7 @@ session_start();
 if (isset($_POST['changePassword-btn'])){
 
     // require is used when the file is mandatory for the application
-    require 'dbh.inc.php';
+    require 'connection.php';
     require 'volunteerFunctions.inc.php';
 
     // collecting the variables from registerVolunteer.php
@@ -21,7 +21,7 @@ if (isset($_POST['changePassword-btn'])){
     }
 
      // check if password is equal to users password in the DB
-    if (checkPasswordInDB($conn, $oldPassword)){
+    if (checkPasswordInDB($con, $oldPassword)){
         header("Location: ../changePassword.php?error=passwordwrong");
         exit();
     }   
@@ -39,7 +39,7 @@ if (isset($_POST['changePassword-btn'])){
     }
 
      //change Password
-     changePassword($conn, $newPassword);
+     changePassword($con, $newPassword);
 }
 
 else {

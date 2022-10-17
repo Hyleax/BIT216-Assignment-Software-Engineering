@@ -5,7 +5,7 @@ session_start();
 if (isset($_POST['editVolunteerProfile-btn'])){
 
     // require is used when the file is mandatory for the application
-    require 'dbh.inc.php';
+    require 'connection.php';
     require 'volunteerFunctions.inc.php';
 
     // collecting the variables from registerVolunteer.php
@@ -28,7 +28,7 @@ if (isset($_POST['editVolunteerProfile-btn'])){
         exit();
     }
 
-    updateVolunteerInformation($conn, $fullName, $phoneNumber, $occupation, $birthdate, $email);
+    updateVolunteerInformation($con, $fullName, $phoneNumber, $occupation, $birthdate, $email);
 }
 
 else {

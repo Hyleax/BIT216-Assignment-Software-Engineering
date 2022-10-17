@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,10 +43,19 @@
             <form class="d-flex">
 
             <?php
-                 echo "<a href=\"login.php\" class= \"btn btn-outline-success btn-lg px-3 mx-3 form-control \">Login</a>";
+                // need to find some way to dtermine which profile page to show
+
+                if (isset($_SESSION["username"])){
+                    echo "<a href=\"volunteerProfile.php\" class= \"btn btn-outline-success btn-lg px-3 mx-3 form-control \">Profile</a>";
+                    echo "<a href=\"includes/logout.inc.php\" class= \"btn btn-outline-success btn-lg px-3 mx-3 form-control \">Logout</a>";
+                }   
+
+                else {
+                    echo "<a href=\"login.php\" class= \"btn btn-outline-success btn-lg px-3 mx-3 form-control \">Login</a>";
+                    echo "<a href=\"registerVolunteer.php\" class=\"btn btn-outline-success btn-lg px-3 mx-3 form-control\">Register</a>";
+                }
+                
             ?>
-                <a href="registerVolunteer.php" class="btn btn-outline-success btn-lg px-3 mx-3 form-control ">Register</a>
-                <a href="volunteerProfile.php" class="btn btn-outline-success btn-lg px-3 mx-3 form-control ">profile</a>
             </form>
           </div>
         </div>

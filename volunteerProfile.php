@@ -64,7 +64,7 @@
                   Options
                 </a>
                 <ul class="dropdown-menu dropdown-menu-lg-end dropdown-menu-dark">
-                    <li><a class="dropdown-item" href="#">Log out</a></li>
+                    <li><a class="dropdown-item" href="includes/logout.inc.php">Log out</a></li>
                   </ul>
             </div>
 
