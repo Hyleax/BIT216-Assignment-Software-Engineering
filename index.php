@@ -1,5 +1,6 @@
 <?php
     session_start();
+    include "includes/connection.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,10 +44,23 @@
             <form class="d-flex">
 
             <?php
-                // need to find some way to dtermine which profile page to show
+                // need to find some way to determine which profile page to show
 
                 if (isset($_SESSION["username"])){
-                    echo "<a href=\"volunteerProfile.php\" class= \"btn btn-outline-success btn-lg px-3 mx-3 form-control \">Profile</a>";
+                    include "includes/profile.inc.php";
+                    
+                    // if user is super admin
+                    if ($userType === "Super Admin 💙"){
+                        echo "<a href=\"superAdminProfile.php\" class= \"btn btn-outline-success btn-lg px-3 mx-3 form-control \">Profile</a>";
+                    }
+
+                    if ($userType === "School Admin 🧡"){
+                        echo "<a href=\"schoolAdminProfile.php\" class= \"btn btn-outline-success btn-lg px-3 mx-3 form-control \">Profile</a>";
+                    }
+                    if ($userType === "Volunteer 💜"){
+                        echo "<a href=\"volunteerProfile.php\" class= \"btn btn-outline-success btn-lg px-3 mx-3 form-control \">Profile</a>";
+                    }
+                    
                     echo "<a href=\"includes/logout.inc.php\" class= \"btn btn-outline-success btn-lg px-3 mx-3 form-control \">Logout</a>";
                 }   
 

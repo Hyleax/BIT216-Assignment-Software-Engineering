@@ -125,7 +125,7 @@ function confirmPassword($password, $confirmPassword){
 }
 
 //check user input for username whether exists in DB
-function testUsernameExists($con, $username){
+function testSAUsernameExists($con, $username){
     $sql = "SELECT * FROM schooladministrator WHERE username = ?;";
     $stmt = mysqli_stmt_init($con);
 

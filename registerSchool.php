@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include("connection.php");
+include("includes/connection.php");
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +48,7 @@ include("connection.php");
 
                 
 
-                <div class="d-flex justify-content-center">
+                <div class="d-flex justify-content-center pt-4 pb-3">
                   <button 
                     type="submit"
                     class="btn btn-success gradient-custom-4 text-body form-control"
@@ -56,11 +56,31 @@ include("connection.php");
                     name = "registerSchool-btn">
                       Confirm
                   </button>
+
+
+                  
                     <span id="redirecting-message"></span>
                 </div>
 
+                <div class = "d-flex justify-content-center text-danger fw-bold mt-3">
+                  <?php
+                      if(isset($_GET["error"])){
+                          if($_GET["error"] == "emptyInput"){
+                              echo "<p>Fill in all fields!</p>";
+                          }
+                          else if($_GET["error"] == "schoolNameTaken"){
+                              echo "<p>School Name is taken! Please enter a new school name</p>";
+                          }
+                          else if($_GET["error"] == "stmtFailed"){
+                              echo "<p>Something went wrong, try again!</p>";
+                          }
+                          else if($_GET["error"] == "none"){
+                              echo "<p>Successfully registered a new school!</p>";
+                          }
+                      }
+                  ?>
+                </div>
               </form>
-
             </div>
           </div>
         </div>
@@ -68,22 +88,7 @@ include("connection.php");
     </div>
   </div>
 
-  <?php
-    if(isset($_GET["error"])){
-        if($_GET["error"] == "emptyInput"){
-            echo "<p>Fill in all fields!</p>";
-        }
-        else if($_GET["error"] == "schoolNameTaken"){
-            echo "<p>School Name is taken! Please enter a new school name</p>";
-        }
-        else if($_GET["error"] == "stmtFailed"){
-            echo "<p>Something went wrong, try again!</p>";
-        }
-        else if($_GET["error"] == "none"){
-            echo "<p>Successfully registered a new school!</p>";
-        }
-    }
-?>
+  
 </section>
 
 

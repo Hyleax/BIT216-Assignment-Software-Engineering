@@ -82,7 +82,7 @@ function checkVolunteerAge($birthdate){
 }
 
 // check if a given username exists in the DB
-function testUsernameExists($con, $username){
+function testVolunteerUsernameExists($con, $username){
     $sql = "SELECT username FROM volunteer WHERE username=?";
     
     // initializes a prepared statement

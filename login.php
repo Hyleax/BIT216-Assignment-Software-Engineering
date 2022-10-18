@@ -29,8 +29,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
         //if username and password are same as condition below
         if($username === "superadmin" && $password === "SuperAdmin"){
+            $_SESSION["username"] = $user_data["username"];
             //redirect user to super admin page
-            header("location: superAdmin.php");
+            header("location: superAdminProfile.php");
             die;
         }
 
@@ -45,7 +46,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                 if($user_data["password"] === $password){
                         $_SESSION["username"] = $user_data["username"];
                         //change to the school admin page
-                        header("location: schoolAdmin.php");
+                        header("location: schoolAdminProfile.php");
                         die;
                 }
                 else {

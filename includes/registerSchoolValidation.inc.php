@@ -8,7 +8,7 @@ if(isset($_POST["registerSchool-btn"])){
     $schoolCity = $_POST["schoolCity"];
 
     require 'connection.php';
-    require 'schoolAdminstratorFunction.php';
+    require 'schoolAdministratorFunction.php';
 
     if(emptyInputRegisterSchool($schoolName, $schoolAddress, $schoolCity) != false){
         //if is empty return back to registerSchool page

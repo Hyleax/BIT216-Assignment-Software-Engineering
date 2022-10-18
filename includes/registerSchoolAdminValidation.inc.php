@@ -44,7 +44,7 @@ if (isset($_POST['registerSchoolAdmin-btn'])) {
         }
 
         // check if username is already taken
-        if (testUsernameExists($con, $username) !== false) {
+        if (testSAUsernameExists($con, $username) !== false) {
             header("Location: ../registerSchoolAdmin.php?error=takenUsername");
             exit();
         }
