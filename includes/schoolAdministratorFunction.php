@@ -226,7 +226,8 @@ function checkDBPassword($con, $oldPassword){
 
 //check password input matches with the criteria 
 function checkPasswordStrength($newPassword){
-    if (strlen($newPassword) <= 8 && !(!ctype_lower($newPassword))){
+    $passwordIsWeak;
+    if (strlen($newPassword) <= 8){
         $passwordIsWeak = true;
     }
     else{
@@ -260,7 +261,7 @@ function changePassword($con, $newPassword){
         mysqli_stmt_bind_param($stmt, "s", $newPassword);
         mysqli_stmt_execute($stmt);
 
-        header("location: ../schoolAdmin.php?changepassword=success");
+        header("location: ../schoolAdminProfile.php?changepassword=success");
         exit();
     }
 }
@@ -297,7 +298,7 @@ function updateSchoolAdminInformation($con, $fullnameSA, $phoneNumSA, $position,
             $phoneNumSA, $position);
             mysqli_stmt_execute($stmt);
                         
-            header("Location: ../schoolAdmin.php?editprofile=success");
+            header("Location: ../schoolAdminProfile.php?editprofile=success");
             exit();
     }
 }

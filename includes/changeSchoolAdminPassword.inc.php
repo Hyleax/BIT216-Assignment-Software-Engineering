@@ -28,7 +28,7 @@ if (isset($_POST['changePassword-btn'])){
     }   
 
      // check if the new password is too weak
-    if (testPasswordStrength($newPassword)){
+    if (checkPasswordStrength($newPassword)){
         header("Location: ../changeSchoolAdminPassword.php?error=passwordtooweak");
         exit();
     }

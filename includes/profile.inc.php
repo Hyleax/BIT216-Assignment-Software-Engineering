@@ -82,3 +82,5 @@ else if(mysqli_num_rows($schoolAdminResult) > 0){
     }
     
 }
+
+

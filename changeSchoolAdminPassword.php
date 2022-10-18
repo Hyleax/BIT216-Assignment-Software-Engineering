@@ -94,7 +94,7 @@
                 class=" bg-dark rounded px-5 pt-5 text-light shadow p-3"
                 style="width: 400px;"    
             >
-               <form action="includes/changePassword.inc.php" class="fw-bold" method="POST">
+               <form action="includes/changeSchoolAdminPassword.inc.php" class="fw-bold" method="POST">
 
                 <div class="form-outline mb-4">
                     <label class="form-label" for="oldPassword">Old Password</label> <span></span>
