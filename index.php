@@ -51,14 +51,14 @@
                     
                     // if user is super admin
                     if ($userType === "Super Admin 💙"){
-                        echo "<a href=\"superAdminProfile.php\" class= \"btn btn-outline-success btn-lg px-3 mx-3 form-control \">Profile</a>";
+                        echo "<a href=\"superAdminProfile.php\" class= \"btn btn-outline-success btn-lg px-3 mx-3 form-control \">SuperAdminProfile</a>";
                     }
 
                     if ($userType === "School Admin 🧡"){
-                        echo "<a href=\"schoolAdminProfile.php\" class= \"btn btn-outline-success btn-lg px-3 mx-3 form-control \">Profile</a>";
+                        echo "<a href=\"schoolAdminProfile.php\" class= \"btn btn-outline-success btn-lg px-3 mx-3 form-control \">SchoolAdminProfile</a>";
                     }
                     if ($userType === "Volunteer 💜"){
-                        echo "<a href=\"volunteerProfile.php\" class= \"btn btn-outline-success btn-lg px-3 mx-3 form-control \">Profile</a>";
+                        echo "<a href=\"volunteerProfile.php\" class= \"btn btn-outline-success btn-lg px-3 mx-3 form-control \">VolunteerProfile</a>";
                     }
                     
                     echo "<a href=\"includes/logout.inc.php\" class= \"btn btn-outline-success btn-lg px-3 mx-3 form-control \">Logout</a>";
