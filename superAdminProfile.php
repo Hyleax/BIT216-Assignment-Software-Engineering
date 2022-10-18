@@ -69,7 +69,7 @@ include("includes/connection.php");
           if (isset($_GET["createSchoolAdmin"])){
             
             if ($_GET["createSchoolAdmin"] === "success"){
-              echo "<h2 class = text-light>You have successfully created a new school and school administrator</h2>";
+              echo "<h2 class = text-light>You have successfully registered a new school and school administrator</h2>";
             }
           }
         ?>
