@@ -43,6 +43,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                     header("location: superAdminProfile.php");
                     die;
                 }
+                else {
+                    header("location: login.php?error=incorrectpassword&username=$username");
+                    die;
+                }
             }
             
         }
@@ -62,7 +66,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                         die;
                 }
                 else {
-                    header("location: login.php?error=incorrectpassword");
+                    header("location: login.php?error=incorrectpassword&username=$username");
                     die;
                 }
             }

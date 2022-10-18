@@ -103,7 +103,7 @@ function testEmailValid($email){
 
 //check password input matches with the criteria
 function testPasswordStrength($password){
-    if (strlen($password) <= 8 && !(!ctype_lower($password))){
+    if (strlen($password) <= 8){
         $passwordIsWeak = true;
     }
     else{
@@ -226,7 +226,7 @@ function checkDBPassword($con, $oldPassword){
 
 //check password input matches with the criteria 
 function checkPasswordStrength($newPassword){
-    $passwordIsWeak;
+    //$passwordIsWeak;
     if (strlen($newPassword) <= 8){
         $passwordIsWeak = true;
     }

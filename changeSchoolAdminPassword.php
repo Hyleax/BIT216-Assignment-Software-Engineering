@@ -49,7 +49,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="editSchoolAdmin.php">Update Profile</a>
+                    <a class="nav-link" href="editSchoolAdminProfile.php">Update Profile</a>
                 </li>
 
                 <li class="nav-item">
@@ -83,7 +83,7 @@
         class="img-fluid mb-2"
         id="profile-pic"
         >
-        <h2 class="bg-dark mt-2 p-2 px-4 rounded-pill" style="color:  #A020F0;"><?php echo $userType?></h2>
+        <h2 class="bg-dark mt-2 p-2 px-4 rounded-pill" style="color:  #FFA500;"><?php echo $userType?></h2>
       </div>
 
 
