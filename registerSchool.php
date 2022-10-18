@@ -54,7 +54,8 @@ include("includes/connection.php");
                     <input type="text" id="schoolCity" name="schoolCity" class="form-control form-control-sm" 
                       <?php if (isset($_GET["schoolCity"])) {?>
                       value = "<?php echo $_GET["schoolCity"] ?>"
-                      <?php } ?>/>
+                      <?php } ?>
+                    />
                 </div>
 
                 
