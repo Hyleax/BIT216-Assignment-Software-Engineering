@@ -74,7 +74,7 @@ include("includes/connection.php");
           }
         ?>
       <img 
-        src="images/admin.png" 
+        src="images/admin.jpg" 
         alt="profile picture" 
         width="250px"
         class="rounded-circle img-fluid mb-2"
