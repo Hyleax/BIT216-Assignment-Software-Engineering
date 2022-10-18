@@ -52,7 +52,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="changePassword.php">Change Password</a>
+                    <a class="nav-link" href="changeVolunteerPassword.php">Change Password</a>
                 </li>
             </ul>
 
@@ -93,7 +93,7 @@
                 class=" bg-dark rounded px-5 pt-5 text-light shadow p-3"
                 style="width: 400px;"    
             >
-               <form action="includes/changePassword.inc.php" class="fw-bold" method="POST">
+               <form action="includes/changeVolunteerPassword.inc.php" class="fw-bold" method="POST">
 
                 <div class="form-outline mb-4">
                     <label class="form-label" for="oldPassword">Old Password</label> <span></span>

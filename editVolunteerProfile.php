@@ -54,7 +54,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="changePassword.php">Change Password</a>
+                    <a class="nav-link" href="changeVolunteerPassword.php">Change Password</a>
                 </li>
             </ul>
 
