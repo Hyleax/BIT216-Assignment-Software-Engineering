@@ -85,31 +85,52 @@ $schoolID = $school_data["schoolID"];
 
                 <div class="form-outline mb-2">
                     <label class="form-label" for="username">Username</label> <span></span>
-                    <input type="text" id="username" name="username" class="form-control form-control-sm" />
+                    <input type="text" id="username" name="username" class="form-control form-control-sm" 
+                      <?php if (isset($_GET["username"])) {?>
+                      value = "<?php echo $_GET["username"] ?>"
+                      <?php } ?>
+                     />
                 </div>
                 <div class="form-outline mb-2">
                     <label class="form-label" for="fullname">Full Name</label> <span></span>
-                    <input type="text" id="fullname" name="fullname" class="form-control form-control-sm" />
+                    <input type="text" id="fullname" name="fullname" class="form-control form-control-sm" 
+                      <?php if (isset($_GET["fullname"])) {?>
+                      value = "<?php echo $_GET["fullname"] ?>"
+                      <?php } ?>
+                    />
                 </div>
  
                 <div class="form-outline mb-2">
                     <label class="form-label" for="position">Position</label> <span></span>
-                    <input type="text" id="position" name="position" class="form-control form-control-sm" />
+                    <input type="text" id="position" name="position" class="form-control form-control-sm" 
+                      <?php if (isset($_GET["position"])) {?>
+                      value = "<?php echo $_GET["position"] ?>"
+                      <?php } ?>
+                    />
                 </div>
                 
                 <div class="form-outline mb-2">
                     <label class="form-label" for="email">Email</label> <span></span>
-                    <input type="email" id="email" name="email" class="form-control form-control-sm" />
+                    <input type="email" id="email" name="email" class="form-control form-control-sm" 
+                      <?php if (isset($_GET["email"])) {?>
+                      value = "<?php echo $_GET["email"] ?>"
+                      <?php } ?>
+                    />
                 </div>
 
                 <div class="form-outline mb-2">
                     <label class="form-label" for="phoneNum">Phone Number</label> <span></span>
-                    <input type="tel" id="phoneNum" name="phoneNum" class="form-control form-control-sm" />
+                    <input type="tel" id="phoneNum" name="phoneNum" class="form-control form-control-sm" 
+                      <?php if (isset($_GET["phoneNum"])) {?>
+                      value = "<?php echo $_GET["phoneNum"] ?>"
+                      <?php } ?>
+                    />
                 </div>
 
                 <div class="form-outline mb-2">
                     <label class="form-label" for="password">Password</label> <span></span>
-                    <input type="password" id="password"  name="password" class="form-control form-control-sm" />
+                    <input type="password" id="password"  name="password" class="form-control form-control-sm"
+                    />
                   
                 </div>
                 <div class="form-outline mb-5">
@@ -117,6 +138,8 @@ $schoolID = $school_data["schoolID"];
                     <input type="password" id="confirmPassword" name = "confirmPassword" class="form-control form-control-sm" />
                 </div>
                 
+
+
                 <div class="d-flex justify-content-center">
                   <button 
                     type="submit"
@@ -126,6 +149,34 @@ $schoolID = $school_data["schoolID"];
                       Register
                   </button>
                     <span id="redirecting-message"></span>
+                </div>
+                <div class = "d-flex justify-content-center text-danger fw-bold mt-3">
+                    <?php
+                    if(isset($_GET["error"])){
+                        if($_GET["error"] == "emptyfields"){
+                          echo "<p>Fill in all fields!</p>";
+                        }
+                        else if($_GET["error"] == "invalidEmail"){
+                          echo "<p>Please enter a valid email address!</p>";
+                        }
+                        else if($_GET["error"] == "passwordStrength"){
+                          echo "<p>Password must be at least 8 character</p>";
+                        }
+                        else if($_GET["error"] == "confirmPassword"){
+                          echo "<p>Password and Repeat your password must be same!</p>";
+                        }
+                        else if($_GET["error"] == "takenUsername"){
+                            echo "<p>Username is taken. Please enter another username!</p>";
+                        }
+                        else if($_GET["error"] == "stmtFailed"){
+                            echo "<p>Something went wrong, try again!</p>";
+                        }
+                        else if($_GET["error"] == "none"){
+                          echo "<p>School registered successfully!</p>";
+                        }
+                    }
+                ?>
+                </div>
               </form>
             </div>
           </div>
@@ -134,43 +185,8 @@ $schoolID = $school_data["schoolID"];
     </div>
   </div>
 
-  <?php
-    if(isset($_GET["error"])){
-        if($_GET["error"] == "emptyfields"){
-            echo '<script language="javascript">';
-            echo 'alert("Fill in all fields!")';
-            echo '</script>';
-        }
-        else if($_GET["error"] == "invalidEmail"){
-            echo '<script language="javascript">';
-            echo 'alert("Please enter a valid email address!")';
-            echo '</script>';
-        }
-        else if($_GET["error"] == "passwordStrength"){
-            echo '<script language="javascript">';
-            echo 'alert("Password must be at least 8 character and ONE upper case!")';
-            echo '</script>';
-        }
-        else if($_GET["error"] == "confirmPassword"){
-            echo '<script language="javascript">';
-            echo 'alert("Password and Repeat your password must be same!")';
-            echo '</script>';
-        }
-        else if($_GET["error"] == "takenUsername"){
-            echo '<script language="javascript">';
-            echo 'alert("Username is taken. Please enter another username!")';
-            echo '</script>';
-        }
-        else if($_GET["error"] == "stmtFailed"){
-            echo "<p>Something went wrong, try again!</p>";
-        }
-        else if($_GET["error"] == "none"){
-            echo '<script language="javascript">';
-            echo 'alert("School registered successfully!")';
-            echo '</script>';
-        }
-    }
-?>
+
+  
 </section>
     
 <!-- JavaScript Bundle with Popper -->

@@ -21,31 +21,31 @@ if (isset($_POST['registerSchoolAdmin-btn'])) {
         // check if fields are empty
         // headers cannot be indented
         if (emptyInputRegisterSchoolAdmin($username, $fullname, $position, $email, $password, $confirmPassword) !== false){
-                header("Location: ../registerSchoolAdmin.php?error=emptyfields");
+                header("Location: ../registerSchoolAdmin.php?error=emptyfields&username=".$username."&fullname=".$fullName."&position=".$position."&email=".$email."&password=".$password."&confirmPassword=".$confirmPassword);
                 exit();
         }
 
         // check if email is valid
         if (testEmailValid($email) !== false){
-            header("Location: ../registerSchoolAdmin.php?error=invalidEmail");
+            header("Location: ../registerSchoolAdmin.php?error=invalidEmail&username=".$username."&fullname=".$fullName."&position=".$position."&password=".$password."&confirmPassword=".$confirmPassword);
             exit();
         }
 
         // check if password is strong enough
         if(testPasswordStrength($password) !== false) {
-            header("Location: ../registerSchoolAdmin.php?error=passwordStrength");
+            header("Location: ../registerSchoolAdmin.php?error=passwordStrength&username=".$username."&fullname=".$fullName."&position=".$position."&email=".$email);
             exit();
         }
 
         // check if password and confirmPassword are the same
         if (confirmPassword($password, $confirmPassword) !== false){
-            header("Location: ../registerSchoolAdmin.php?error=confirmPassword");
+            header("Location: ../registerSchoolAdmin.php?error=confirmPassword&username=".$username."&fullname=".$fullName."&position=".$position."&email=".$email);
             exit();
         }
 
         // check if username is already taken
         if (testSAUsernameExists($con, $username) !== false) {
-            header("Location: ../registerSchoolAdmin.php?error=takenUsername");
+            header("Location: ../registerSchoolAdmin.php?error=takenUsername&fullname=".$fullName."&position=".$position."&email=".$email."&password=".$password."&confirmPassword=".$confirmPassword);
             exit();
         }
 

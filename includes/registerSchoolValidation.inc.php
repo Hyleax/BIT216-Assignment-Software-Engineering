@@ -12,13 +12,13 @@ if(isset($_POST["registerSchool-btn"])){
 
     if(emptyInputRegisterSchool($schoolName, $schoolAddress, $schoolCity) != false){
         //if is empty return back to registerSchool page
-        header("location: ../registerSchool.php?error=emptyInput");
+        header("location: ../registerSchool.php?error=emptyInput&schoolName=".$schoolName."&schoolAddress=".$schoolAddress."&schoolCity=".$schoolCity);
         exit();
     }
 
     if(schoolNameExist($con, $schoolName) != false){
         //if is empty return back to registerSchool page
-        header("location: ../registerSchool.php?error=schoolNameTaken");
+        header("location: ../registerSchool.php?error=schoolNameTaken&schoolAddress=".$schoolAddress."&schoolCity=".$schoolCity);
         exit();
     }
 
