@@ -119,7 +119,7 @@
                   }
 
                   else if ($_GET["error"] == "tooyoung"){
-                    echo "<p>You are too young to be a volunteer</p>";
+                    echo "<p>You must be 16 years old and above to register as a volunteer</p>";
                   }
                   
                   else if ($_GET["error"] == "emailinvalid"){
