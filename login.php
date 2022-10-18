@@ -33,11 +33,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
 
         if($resultSuper){
-            if($resultSuper && mysqli_num_rows($resultSuper)){
+            if($resultSuper && mysqli_num_rows($resultSuper) > 0){
                 $user_data = mysqli_fetch_assoc($resultSuper);
                 
                 //if username and password are same as condition below
                 if($username === "superadmin" && $password === "SuperAdmin"){
+                    $_SESSION["username"] = $user_data["username"];
                     //redirect user to super admin page
                     header("location: superAdminProfile.php");
                     die;

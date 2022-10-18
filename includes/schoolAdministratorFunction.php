@@ -185,7 +185,7 @@ function createSchoolAdmin($con, $username, $password, $fullname, $email, $phone
     //echo '<script language="javascript">';
     //echo 'alert("School Aministrator registered successfully!")';
     //echo '</script>';
-    header("location: ../superAdmin.php?createSchoolAdmin=success");
+    header("location: ../superAdminProfile.php?createSchoolAdmin=success");
     exit();
 }
 

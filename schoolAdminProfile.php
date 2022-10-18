@@ -110,7 +110,7 @@ else{
         src="images/defaultProfilePhoto.png" 
         alt="profile picture" 
         width="250px"
-        class="rounded-circle img-fluid mb-2"
+        class="img-fluid mb-2"
         id="profile-pic"
         >
         <h2 class="bg-dark mt-2 p-2 px-4 rounded-pill" style="color:  #FFA500;"><?php echo $userType?></h2>
