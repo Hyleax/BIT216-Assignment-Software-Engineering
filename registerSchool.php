@@ -33,17 +33,29 @@ include("includes/connection.php");
 
                 <div class="form-outline mb-2">
                     <label class="form-label" for="schoolName">School Name</label> <span></span>
-                    <input type="text" id="schoolName" name="schoolName" class="form-control form-control-sm" />
+                    <input type="text" id="schoolName" name="schoolName" class="form-control form-control-sm" 
+                      <?php if (isset($_GET["schoolName"])) {?>
+                      value = "<?php echo $_GET["schoolName"] ?>"
+                      <?php } ?>
+                      />
                 </div>
 
                 <div class="form-outline mb-2">
                     <label class="form-label" for="schoolAddress">School Address</label> <span></span>
-                    <input type="text" id="schoolAddress" name="schoolAddress" class="form-control form-control-sm" />
+                    <input type="text" id="schoolAddress" name="schoolAddress" class="form-control form-control-sm"
+                      <?php if (isset($_GET["schoolAddress"])) {?>
+                      value = "<?php echo $_GET["schoolAddress"] ?>"
+                      <?php } ?>
+                      />
                 </div>
  
                 <div class="form-outline mb-2">
                     <label class="form-label" for="schoolCity">School City</label> <span></span>
-                    <input type="text" id="schoolCity" name="schoolCity" class="form-control form-control-sm" />
+                    <input type="text" id="schoolCity" name="schoolCity" class="form-control form-control-sm" 
+                      <?php if (isset($_GET["schoolCity"])) {?>
+                      value = "<?php echo $_GET["schoolCity"] ?>"
+                      <?php } ?>
+                    />
                 </div>
 
                 
