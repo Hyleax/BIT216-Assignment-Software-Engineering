@@ -45,10 +45,6 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="viewRequests.php">View Requests</a>
                 </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="volunteerProfile.php">Profile</a>
-                </li>
                 
                 <li class="nav-item">
                     <a class="nav-link" href="editVolunteerProfile.php">Update Profile</a>
