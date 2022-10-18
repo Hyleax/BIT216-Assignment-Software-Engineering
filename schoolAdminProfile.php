@@ -107,7 +107,7 @@ else{
           }
         ?>
       <img 
-        src="images/yewPic.jpg" 
+        src="images/defaultProfilePhoto.png" 
         alt="profile picture" 
         width="250px"
         class="rounded-circle img-fluid mb-2"
