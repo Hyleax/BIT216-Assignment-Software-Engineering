@@ -15,11 +15,16 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     }
 
     else if(!empty($username) && !empty($password)){
+        //select all data from from schooladministrator table where username is equal to username input field and position is super admin
+        $querySuper = "SELECT * FROM schooladministrator WHERE username='$username' AND position='Super Admin';";
         //select all data from from schooladministrator table where username is equal to username input field
         $querySA = "SELECT * FROM schooladministrator WHERE username='$username' AND position<>'Super Admin';";
         //select all data from from schooladministrator table where username is equal to username input field
         $queryV = "select * from volunteer WHERE username='$username'";
 
+        //get school administrator data from database and store it (schooladministrator table)
+        $resultSuper = mysqli_query($con, $querySuper);
+        
         //get school administrator data from database and store it (schooladministrator table)
         $resultSA = mysqli_query($con, $querySA);
 
@@ -27,12 +32,18 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         $resultV = mysqli_query($con, $queryV);
 
 
-        //if username and password are same as condition below
-        if($username === "superadmin" && $password === "SuperAdmin"){
-            $_SESSION["username"] = $user_data["username"];
-            //redirect user to super admin page
-            header("location: superAdminProfile.php");
-            die;
+        if($resultSuper){
+            if($resultSuper && mysqli_num_rows($resultSuper)){
+                $user_data = mysqli_fetch_assoc($resultSuper);
+                
+                //if username and password are same as condition below
+                if($username === "superadmin" && $password === "SuperAdmin"){
+                    //redirect user to super admin page
+                    header("location: superAdminProfile.php");
+                    die;
+                }
+            }
+            
         }
 
         //if resultSA is true
