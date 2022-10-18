@@ -80,7 +80,7 @@ include("includes/connection.php");
         class="rounded-circle img-fluid mb-2"
         id="profile-pic"
         >
-        <h2 class="bg-dark mt-2 p-2 px-4 rounded-pill" style="color:  #A020F0;">Super Admin 💙</h2>
+        <h2 class="bg-dark mt-2 p-2 px-4 rounded-pill" style="color:  #0000FF;">Super Admin 💙</h2>
       </div>
 
 
