@@ -117,6 +117,10 @@
                   if ($_GET["error"] == "emptyfields"){
                     echo "<p>Fill in all fields!</p>";
                   }
+
+                  else if ($_GET["error"] == "tooyoung"){
+                    echo "<p>You are too young to be a volunteer</p>";
+                  }
                   
                   else if ($_GET["error"] == "emailinvalid"){
                     echo "<p>Email is invalid</p>";

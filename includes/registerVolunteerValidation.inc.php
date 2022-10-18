@@ -24,6 +24,12 @@ if (isset($_POST['volunteerRegister-btn'])) {
                 exit();
         }
 
+        // check if user is old enough
+        if (checkVolunteerAge($birthdate)){
+            header("Location: ../registerVolunteer.php?error=tooyoung&username=".$username."&fullname=".$fullName."&phoneNumber=".$phoneNumber."&occupation=".$occupation."&email=".$email);
+                exit();
+        }
+
         // check if email is valid
         if (testEmailValid($email)){
             header("Location: ../registerVolunteer.php?error=emailinvalid&username=".$username."&fullname=".$fullName."&phoneNumber=".$phoneNumber."&occupation=".$occupation."&birthdate=".$birthdate);

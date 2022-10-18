@@ -56,6 +56,31 @@ function testEmailValid($email){
     return $result;
 }
 
+// check if a user is old enough to be a volunteer
+function checkVolunteerAge($birthdate){
+    $result;
+
+    // get system date
+    $systemDate = date('Y-m-d');
+    $systemDate = explode('-', $systemDate);
+    $systemYear = $systemDate[0];
+   
+
+    $birthdateArray = date($birthdate);
+    $birthdateArray = explode('-', $birthdate);
+    $birthYear = $birthdateArray[0];
+
+    $age = $systemDate[0] - $birthdateArray[0];
+
+    if ($age < 16){
+        $result = true;
+    }
+    else {
+        $result = false;
+    }
+    return $result;  
+}
+
 // check if a given username exists in the DB
 function testUsernameExists($con, $username){
     $sql = "SELECT username FROM volunteer WHERE username=?";
