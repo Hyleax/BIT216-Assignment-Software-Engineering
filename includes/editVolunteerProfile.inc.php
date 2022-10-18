@@ -22,6 +22,12 @@ if (isset($_POST['editVolunteerProfile-btn'])){
         exit();
     }
 
+    // check if user is old enough
+    if (checkVolunteerAge($birthdate)){
+        header("Location: ../editVolunteerProfile.php?error=tooyoung&fullname=$fullName.phonenumber=&$phoneNumber.occupation=&$occupation.&$email");
+            exit();
+    }
+
     // check if email is valid
     if (testEmailValid($email)){
         header("Location: ../editVolunteerProfile.php?error=emailinvalid&fullname=".$fullName."&phoneNumber=".$phoneNumber."&occupation=".$occupation."&birthdate=".$birthdate);

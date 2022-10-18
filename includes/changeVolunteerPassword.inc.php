@@ -16,25 +16,25 @@ if (isset($_POST['changePassword-btn'])){
     
     // check if fields are empty
     if (checkPasswordFieldsEmpty($oldPassword, $newPassword, $confirmPassword)){
-        header("Location: ../changePassword.php?error=emptyfields");
+        header("Location: ../changeVolunteerPassword.php?error=emptyfields");
         exit();
     }
 
      // check if password is equal to users password in the DB
     if (checkPasswordInDB($con, $oldPassword)){
-        header("Location: ../changePassword.php?error=passwordwrong");
+        header("Location: ../changeVolunteerPassword.php?error=passwordwrong");
         exit();
     }   
 
      // check if the new password is too weak
     if (testPasswordStrength($newPassword)){
-        header("Location: ../changePassword.php?error=passwordtooweak");
+        header("Location: ../changeVolunteerPassword.php?error=passwordtooweak");
         exit();
     }
 
      // check if the newPassword and confirmPasword match
      if (confirmPassword($newPassword, $confirmPassword)){
-        header("Location: ../changePassword.php?error=passwordnotequal");
+        header("Location: ../changeVolunteerPassword.php?error=passwordnotequal");
         exit();
     }
 

@@ -172,6 +172,10 @@
                             else if ($_GET["error"] == "emailinvalid"){
                               echo "<p class=\"text-danger\">Newly provided email is invalid</p>";
                             }
+
+                            else if ($_GET["error"] == "tooyoung"){
+                              echo "<p class=\"text-danger\">Your inputted age is too young to be a volunteer</p>";
+                            }
                           }
                         ?>
 
