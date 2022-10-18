@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include ("connection.php");
+include ("includes/connection.php");
 
 $query = "SELECT * FROM school ORDER BY schoolID DESC LIMIT 1;";
 $result = mysqli_query($con, $query);
