@@ -46,11 +46,11 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="schoolAdmin.php">Profile</a>
+                    <a class="nav-link" href="schoolAdminProfile.php">Profile</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="editSchoolAdmin.php">Update Profile</a>
+                    <a class="nav-link" href="editSchoolAdminProfile.php">Update Profile</a>
                 </li>
 
                 <li class="nav-item">
