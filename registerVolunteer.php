@@ -22,6 +22,9 @@
         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
           <div class="card bg-dark mb-5" style="border-radius: 15px;">
             <div class="card-body p-5">
+            <a href="index.php" class="d-flex justify-content-center">
+        <img src="images/ColTeach.png" alt="ColTeach logo"class = "mb-3" style="width: 250px;">
+            </a>
               <h2 class="text-uppercase text-center text-success mb-4">Register as a Volunteer</h2>
               <span id="empty-values"></span>
 
