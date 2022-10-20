@@ -18,9 +18,6 @@
 <section>
   <div class="mask d-flex align-items-center mt-5">
     <div class="container h-100">
-      <a href="index.php">
-                          <img src="images/ColTeach.png" alt="ColTeach logo" style="width: 50%;display: block; height: 50%; margin-left: auto; margin-right: auto;" class = "bg-dark mb-5 rounded-pill">
-                      </a>
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
           <div class="card bg-dark mb-5" style="border-radius: 15px;">
