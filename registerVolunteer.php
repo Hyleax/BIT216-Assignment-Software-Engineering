@@ -164,9 +164,9 @@
   </div>
 </section>
 
-  
+<script src = "javascript/regVolunteerClientSideValidation.js"></script>
 
-<script src = "javascript/registerVolunteerClientSideValidation.js"></script>
+
 
 <!-- JavaScript Bundle with Popper -->
 <script 

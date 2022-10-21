@@ -9,20 +9,35 @@ const confirmPasswordInput = document.getElementById('confirmPassword')
 const errorMessageElements = document.querySelectorAll('#errorMsg');
 const errorMessagesArray = [
     "this field cannot be left empty",
-    "this birthdate makes you innelligible to volunteer",
+    "only people 16 or above can volunteer",
     "email is invalid",
     "password is too weak",
     "passwords are not the same",
     "password is strong enough"
 ]
 
-
-
-
 // function to test empty input on client side
 const testEmptyInput = (inputName, index) => {
     if (inputName === ""){
         errorMessageElements[index].textContent = errorMessagesArray[0]
+    }
+    else {
+        errorMessageElements[index].textContent = ""
+    }
+}
+
+// function to test if volunteer is old enough on client side
+const testAge = (inputName, index) => {
+    
+    //convert user input date from string to Date
+    let birthDate = new Date(inputName)
+
+    // get current system Date
+    let todaysDate = new Date()
+    let age = todaysDate.getFullYear() - birthDate.getFullYear()
+
+    if (age < 16){
+        errorMessageElements[index].textContent = errorMessagesArray[1]
     }
     else {
         errorMessageElements[index].textContent = ""
@@ -51,6 +66,7 @@ const testPasswordStrength = (inputName, index) => {
     }
 }
 
+// function to test if password and confirmpassword have the same value
 const testBothPasswordSame = (passInput, confPassInput, index) => {
     if (passInput !== confPassInput){
         errorMessageElements[index].textContent = errorMessagesArray[4]
@@ -60,6 +76,8 @@ const testBothPasswordSame = (passInput, confPassInput, index) => {
     }
 }
 
+
+// onBlur event listeners for all inputs in registerVolunteer
 
 usernameInput.addEventListener('blur', () => {
     testEmptyInput(usernameInput.value, 0)
@@ -79,6 +97,7 @@ occupationInput.addEventListener('blur', () => {
 
 DOBinput.addEventListener('blur', () => {
     testEmptyInput(DOBinput.value, 4)
+    testAge(DOBinput.value, 4)
 })
 
 emailInput.addEventListener('blur', () => {
