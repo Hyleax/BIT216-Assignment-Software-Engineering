@@ -6,3 +6,8 @@ footer{
     position: sticky;
     top: 100%;
 }
+
+.error {
+    color: red;
+    font-weight: bold;
+}

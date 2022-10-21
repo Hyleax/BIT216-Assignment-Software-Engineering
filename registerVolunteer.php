@@ -13,6 +13,7 @@
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" 
         crossorigin="anonymous"
     >
+    <link rel="stylesheet" href="css/errorMsg.css">
 </head>
 <body style="background: linear-gradient(to right, rgb(182, 244, 146), rgb(51, 139, 147));">
 <section>
@@ -31,7 +32,7 @@
               <form class="text-light fw-bold" action = "includes/registerVolunteerValidation.inc.php" method = "POST">
 
                 <div class="form-outline mb-2">
-                    <label class="form-label" for="username">Username</label> <span></span>
+                    <label class="form-label" for="username">Username</label> <span id = "errorMsg"></span>
                     <input 
                       type="text" 
                       id="username" 
@@ -45,7 +46,7 @@
                 </div>
 
                 <div class="form-outline mb-2">
-                    <label class="form-label" for="fullname">Full Name</label> <span></span>
+                    <label class="form-label" for="fullname">Full Name</label> <span id = "errorMsg"></span>
                     <input type="text" id="fullname" name="fullname" class="form-control form-control-sm" 
                     <?php if (isset($_GET["fullname"])) {?>
                       value = "<?php echo $_GET["fullname"] ?>"
@@ -54,7 +55,7 @@
                 </div>
  
                 <div class="form-outline mb-2">
-                    <label class="form-label" for="phoneNumber">Phone Number</label> <span></span>
+                    <label class="form-label" for="phoneNumber">Phone Number</label> <span id = "errorMsg"></span>
                     <input type="tel" id="phoneNumber" name="phoneNumber" class="form-control form-control-sm" 
                     <?php if (isset($_GET["phoneNumber"])) {?>
                       value = "<?php echo $_GET["phoneNumber"] ?>"
@@ -63,7 +64,7 @@
                 </div>
 
                 <div class="form-outline mb-2">
-                    <label class="form-label" for="occupation">Occupation</label> <span></span>
+                    <label class="form-label" for="occupation">Occupation</label> <span id = "errorMsg"></span>
                     <input type="text" id="occupation" name="occupation" class="form-control form-control-sm" 
                     <?php if (isset($_GET["occupation"])) {?>
                       value = "<?php echo $_GET["occupation"] ?>"
@@ -72,7 +73,7 @@
                 </div>
 
                 <div class="form-outline mb-2">
-                    <label class="form-label" for="birthdate">Date of birth</label> <span></span>
+                    <label class="form-label" for="birthdate">Date of birth</label> <span id = "errorMsg"></span>
                     <input type="date" id="birthdate" name="birthdate" class="form-control form-control-sm" 
                     <?php if (isset($_GET["birthdate"])) {?>
                       value = "<?php echo $_GET["birthdate"] ?>"
@@ -81,7 +82,7 @@
                 </div>
 
                 <div class="form-outline mb-2">
-                    <label class="form-label" for="email">Your Email</label> <span></span>
+                    <label class="form-label" for="email">Your Email</label> <span id = "errorMsg"></span>
                     <input type="email" id="email" name="email" class="form-control form-control-sm" 
                     <?php if (isset($_GET["email"])) {?>
                       value = "<?php echo $_GET["email"] ?>"
@@ -90,13 +91,13 @@
                 </div>
 
                 <div class="form-outline mb-2">
-                    <label class="form-label" for="password">Password</label> <span></span>
+                    <label class="form-label" for="password">Password</label> <span id = "errorMsg"></span>
                     <input type="password" id="password"  name="password" class="form-control form-control-sm" />
                   
                 </div>
 
                 <div class="form-outline mb-5">
-                    <label class="form-label" for="confirmPassword">Repeat your password</label> <span></span>
+                    <label class="form-label" for="confirmPassword">Repeat your password</label> <span id = "errorMsg"></span>
                     <input type="password" id="confirmPassword" name = "confirmPassword" class="form-control form-control-sm" />
                 </div>
 
@@ -165,6 +166,7 @@
 
   
 
+<script src = "javascript/registerVolunteerClientSideValidation.js"></script>
 
 <!-- JavaScript Bundle with Popper -->
 <script 
