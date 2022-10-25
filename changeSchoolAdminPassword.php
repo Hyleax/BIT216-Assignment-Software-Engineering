@@ -19,7 +19,7 @@
     >
 </head>
 <body style="background-color: #50C878;">
-    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.php">
                 <img src="images/ColTeach.png"
@@ -40,12 +40,12 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item active">
-                    <a class="nav-link" href="viewRequests.php">View Requests</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="submitRequest.php">Submit New Request</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="schoolAdmin.php">Profile</a>
+                    <a class="nav-link" href="reviewOffer.html">Review Offer</a>
                 </li>
 
                 <li class="nav-item">
@@ -69,7 +69,6 @@
           </div>
         </div>
       </nav>
-
 
       <!--Profile picture container-->
       <div 

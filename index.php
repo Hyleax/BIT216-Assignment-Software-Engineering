@@ -251,7 +251,7 @@
         <!-- Copyright -->
         <div class="text-center p-3">
           © 2022 Copyright:
-          <a class="text-success" href="https://ColTeach.com.my/"><b>ColTeach.com.my</b></a>
+          <a class="text-success" href="index.php"><b>ColTeach.com.my</b></a>
         </div>
         <!-- Copyright -->
       </footer>

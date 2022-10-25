@@ -139,6 +139,7 @@ function createVolunteer($con, $username, $fullName, $phoneNumber, $occupation,$
     }
 }
 
+
 /**
  * 
  * FUNCTIONS FOR EDITING VOLUNTEER PROFILE

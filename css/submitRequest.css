@@ -1,0 +1,22 @@
+body{
+    background-color: #d2f8d2;
+}
+
+.cont-1 { 
+    background-color: #24fbac;
+;
+}
+
+.cont-2 {
+    background-color: #04b976;
+}
+
+.request-option-container:hover{
+    color: #39FF14;
+    background-color: black;
+    transition: 0.4s;
+}
+
+.request-container{
+    display: none;
+}
