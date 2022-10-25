@@ -15,7 +15,7 @@ const errorMessagesArray = [
 ]
 let errorMessageElements;
 
-
+console.log("sup");
 
 // inputs for TUTORIAL request
 const tutDescription = document.getElementById('tutorial-description')
@@ -122,6 +122,9 @@ backtoInitialContainerBtn.addEventListener('click', (event) => {
     resourceOptionContainer.parentElement.style.display = "block";
     requestContainer.style.display = "none"
     reqText.textContent = "Select a Request Type"
+    errorMessageElements.forEach((error) => {
+        error.textContent = ""
+    })
 })
 
 tutOptionContainer.addEventListener('click', () => {
