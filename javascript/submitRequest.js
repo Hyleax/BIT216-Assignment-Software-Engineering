@@ -6,6 +6,7 @@ const backtoInitialContainerBtn = document.getElementById('backtoInitialContaine
 const tutorialContentContainer = document.querySelector('.tutorial-content-container')
 const resourceContentContainer = document.querySelector('.resource-content-container')
 const reqText = document.querySelector('.reqText')
+const reqTypeSelector = document.getElementById('reqTypeSelector')
 const errorMessagesArray = [
     "this field cannot be left empty",
     "This is not a valid tutorial date",
@@ -14,8 +15,6 @@ const errorMessagesArray = [
     "Please schedule a session at least 3 days in advance"
 ]
 let errorMessageElements;
-
-console.log("sup");
 
 // inputs for TUTORIAL request
 const tutDescription = document.getElementById('tutorial-description')
@@ -135,6 +134,7 @@ tutOptionContainer.addEventListener('click', () => {
     resourceContentContainer.style.display = "none"
     reqText.textContent = "Details for the Tutorial Request"
     errorMessageElements = document.querySelectorAll('#errorMsg')
+    reqTypeSelector.value = "tutorial"
 })
 
 
@@ -146,4 +146,5 @@ resourceOptionContainer.addEventListener('click', () => {
     resourceContentContainer.style.display = "block"
     reqText.textContent = "Details for the Resource Request"
     errorMessageElements = document.querySelectorAll('#errorMsg')
+    reqTypeSelector.value = "resource"
 })

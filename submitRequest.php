@@ -1,3 +1,10 @@
+
+<?php
+  session_start();
+  require_once 'includes/profile.inc.php';
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,8 +77,31 @@
       <h1 class="display-1 text-center mt-3 fw-bold">SUBMIT REQUEST</h1>
       <h5 class="reqText display-5 text-center"><i>Select a Request Type</i></h5>
 
+      <div class = "d-flex justify-content-center text-danger fw-bold mt-3">
+              <?php
+                if (isset($_GET["error"])){
+                  
+                  if ($_GET["error"] == "emptyfields"){
+                    echo "<p class = \"display-5\">Fill in all fields!</p>";
+                  }
+
+                  else if ($_GET["error"] == "timeinvalid"){
+                    echo "<p class = \"display-5\">Please schedule a session at least 3 days in advance</p>";
+                  }
+
+                  else if ($_GET["error"] == "numinvalid"){
+                    echo "<p class = \"display-5\">Please enter a valid number</p>";
+                  }
+                
+                  else if($_GET["error"] == "sqlerror"){
+                    echo "<p class = \"display-5\">Something went wrong, please try again</p>";
+                  }
+                }
+              ?>
+              </div>
+
       <!--MAIN CONTENT-->
-      <form action="submitRequest.inc.php" method="POST" class="100-vh">
+      <form action="includes/submitRequest.inc.php" method="POST" class="100-vh">
 
         <!--INITIAL CONTAINER-->
         <div class="row text-center d-flex align-items-center mt-4 mx-3">
@@ -79,18 +109,16 @@
                 <div 
                     class="request-option-container cont-1 d-flex justify-content-center align-items-center" 
                     style="height: 500px;"
-                    name = "tutorialRequest"
                 >
-                    <h1 class="display-1">Tutorial</h1>
+                    <h1 class="display-1" for = "tutorial" >Tutorial</h1> 
                 </div>
             </div>
             <div class="col-sm-6 mt-3 mb-2">
                 <div 
                     class="request-option-container cont-2 d-flex justify-content-center align-items-center" 
                     style="height: 500px;"
-                    name = "resourceRequest"
                 >
-                    <h1 class="display-1">Resource</h1>
+                    <h1 class="display-1" for = "resource">Resource</h1>
                 </div>
             </div>
         </div>  
@@ -111,29 +139,54 @@
                   <span id="redirecting-message"></span>
               </div>
             
+
+              <input id = "reqTypeSelector" type="text" name= "requestType" hidden>
+
             <!--DISPLAY THIS IF TUTORIAL REQUEST IS CLICKED-->
             <div class="tutorial-content-container px-5">
                 <div class="row">
-
                      <!--tutorial description-->
                      <div class="form-group mb-2 pb-4">
                         <label class="form-label" for="tutorial-description">Tutorial Description</label> <span id = "errorMsg"></span>
                         
-                        <input type="text" id="tutorial-description" 
-                            class="form-control form-control-sm" placeholder="Enter tutorial description"/>
+                        <input 
+                            type="text" 
+                            id="tutorial-description" 
+                            class="form-control form-control-sm" 
+                            placeholder="Enter tutorial description"
+                            name = "tutorial-description"
+                            <?php if (isset($_GET["tutDesc"])) {?>
+                            value = "<?php echo $_GET["tutDesc"] ?>"
+                            <?php } ?>
+                        />
+                
                     </div>
                 
                     <!--date and time of proposed tutorial-->
                     <div class="form-group mb-2 pb-4">
                         <label class="form-label" for="tutorial-time">Tutorial Time</label>  <span id = "errorMsg"></span>
-                        <input type="datetime-local" id="tutorial-time" 
-                            class="form-control form-control-sm"/>
+                        <input 
+                            type="datetime-local" 
+                            id="tutorial-time" 
+                            class="form-control form-control-sm"
+                            name = "tutorial-time"
+                            <?php if (isset($_GET["tutTime"])) {?>
+                            value = "<?php echo $_GET["tutTime"] ?>"
+                            <?php } ?>
+                        />
                     </div>
 
                     <!--student level from primary one to secondary 5-->
                     <div class="form-group mb-2 pb-4">
                         <label class="form-label" for="student-level">Student Level</label>  <span id = "errorMsg"></span>
-                        <select id="student-level" class="form-control">
+                        <select 
+                            id="student-level" 
+                            class="form-control" 
+                            name = "student-level"
+                            <?php if (isset($_GET["studentLvl"])) {?>
+                            value = "<?php echo $_GET["studentLvl"] ?>"
+                            <?php } ?>
+                        >
                             <option selected>Select student level...</option>
                             <option value="primary-1">primary 1</option>
                             <option value="primary-2">primary 2</option>
@@ -152,8 +205,16 @@
                     <div class="form-group mb-2 pb-4">
                         <label class="form-label" for="no-of-students">Number of expected students</label>
                         <span id = "errorMsg"></span>
-                        <input type="text" id="no-of-students" 
-                            class="form-control form-control-sm" placeholder="e.g., 15"/>
+                        <input 
+                            type="text" 
+                            id="no-of-students" 
+                            class="form-control form-control-sm" 
+                            placeholder="e.g., 15"
+                            name = no-of-students
+                            <?php if (isset($_GET["noStudents"])) {?>
+                            value = "<?php echo $_GET["noStudents"] ?>"
+                            <?php } ?>
+                        />
                     </div>
                 </div>
             </div>
@@ -163,14 +224,28 @@
                     <!--Resource Description-->
                     <div class="form-group mb-2 pb-4">
                         <label class="form-label" for="resource-description">Resource Description</label>  <span id = "errorMsg"></span>
-                        <input type="text" id="resource-description" 
-                            class="form-control form-control-sm" placeholder="Enter resource description"/>
+                        <input 
+                            type="text" 
+                            id="resource-description" 
+                            class="form-control form-control-sm" 
+                            placeholder="Enter resource description"
+                            name = "resource-description"/>
+                            <?php if (isset($_GET["resourceDescription"])) {?>
+                            value = "<?php echo $_GET["resourceDescription"] ?>"
+                            <?php } ?>
                     </div>
 
                     <!--Resource Type-->
                     <div class="form-group mb-2 pb-4 mt-3">
                         <label class="form-label" for="resource-type">Resource Type</label>  <span id = "errorMsg"></span>
-                        <select id="resource-type" class="form-control">
+                        <select 
+                            id="resource-type" 
+                            class="form-control"
+                            name = "resource-type"   
+                            <?php if (isset($_GET["resType"])) {?>
+                            value = "<?php echo $_GET["resType"] ?>"
+                            <?php } ?>
+                        >
                             <option selected>Select resource type...</option>
                             <option value="mobile-device">mobile device</option>
                             <option value="personal-computer">personal computer</option>
@@ -181,18 +256,26 @@
                     <!--Number of resources-->
                     <div class="form-group mb-2 pb-4 mt-3">
                         <label class="form-label" for="number-of-resources">Number of resources</label>  <span id = "errorMsg"></span>
-                        <input type="text" id="number-of-resources" 
-                            class="form-control form-control-sm" placeholder="e.g., 10"/>
+                        <input 
+                            type="text" 
+                            id="number-of-resources" 
+                            class="form-control form-control-sm" 
+                            placeholder="e.g., 10"
+                            name = "number-of-resources"
+                            <?php if (isset($_GET["noRes"])) {?>
+                            value = "<?php echo $_GET["noRes"] ?>"
+                            <?php } ?>
+                        />
                     </div>
             </div>
 
-             <!--CLICK TO GO BACK TO REQUEST TYPE SELECTION-->
+             <!--Submit Request to submitRequest.inc.php-->
              <div class="d-flex justify-content-center mt-5">
                 <button 
                   class="btn btn-success fw-bold text-light mb-5 form-control form-control-sm"
                   style="height: 50px; width: 1200px;"
-                  id="backtoInitialContainerBtn"
-                  name = "backtoInitialContainerBtn">
+                  id="submitRequestBtn"
+                  name = "submitRequestBtn">
                     Submit Request
                 </button>
                   <span id="redirecting-message"></span>

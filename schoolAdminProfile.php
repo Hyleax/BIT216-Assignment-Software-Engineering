@@ -105,6 +105,12 @@ else{
               echo "<h2 class = text-light>You have successfully changed your profile information</h2>";
             }
           }
+
+          else if (isset($_GET['submitrequest'])){
+            if ($_GET['submitrequest'] === "success"){
+              echo "<h2 class = text-light>You have successfully submitted a request for aid</h2>";
+            }
+          }
         ?>
       <img 
         src="images/defaultProfilePhoto.png" 
