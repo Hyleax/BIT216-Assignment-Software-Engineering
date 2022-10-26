@@ -11,7 +11,7 @@
 function tutorialReqInputEmpty($tutorialDescription, $tutorialTime, $studentLevel, $noOfStudents){
     $result;
     if (empty($tutorialDescription) || empty($tutorialTime) 
-        || empty($studentLevel) || empty($studentLevel)){
+        || $studentLevel === "Select student level..." || empty($studentLevel)){
         $result = true;    
     }
 
@@ -36,6 +36,7 @@ function tutorialTimeInvalid($tutorialTime){
     }
     return $result;
 }
+
 
 // check if no of students is invalid
 function numberIsInvalid($input){
@@ -82,7 +83,7 @@ function createTutorialRequest($con, $staffID, $schoolID, $tutorialDescription, 
 // check if resource requests inputs are empty
 function resourceReqInputEmpty($resourceDescription, $resourceType, $noOfResources){
     $result;
-    if (empty($resourceDescription)|| empty($resourceType) || empty($noOfResources)) {
+    if (empty($resourceDescription)|| $resourceType === "Select resource type..." || empty($noOfResources)) {
         $result = true;
     }
     else {

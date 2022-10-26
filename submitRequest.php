@@ -92,6 +92,14 @@
                   else if ($_GET["error"] == "numinvalid"){
                     echo "<p class = \"display-5\">Please enter a valid number</p>";
                   }
+
+                  else if ($_GET["error"] == "stulvlinvalid"){
+                    echo "<p class = \"display-5\">Please select a student level</p>";
+                  }
+
+                  else if ($_GET["error"] == "restypeinvalid"){
+                    echo "<p class = \"display-5\">Please select a resource type</p>";
+                  }
                 
                   else if($_GET["error"] == "sqlerror"){
                     echo "<p class = \"display-5\">Something went wrong, please try again</p>";
