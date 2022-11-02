@@ -87,6 +87,12 @@
                     echo "<h2 class = text-light>You have successfully changed your profile information</h2>";
                   }
                 }
+        
+                if(isset($_GET["submitOffer"])){
+                  if ($_GET["submitOffer"] === "success"){
+                    echo "<h2 class = text-light>You have successfully submitted an offer</h2>";
+                } 
+              } 
         ?>
 
           <img 
