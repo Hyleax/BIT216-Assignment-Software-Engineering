@@ -54,7 +54,7 @@ function addOffer($con, $remark, $volunteerID, $requestID, $type){
         mysqli_stmt_close($stmt3);
     }
 
-    header("location: ../viewRequests.php?error=success");
+    header("location: ../volunteerProfile.php?submitOffer=success");
      exit();
     
 }
