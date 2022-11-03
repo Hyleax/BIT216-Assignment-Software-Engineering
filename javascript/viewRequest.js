@@ -29,36 +29,36 @@ const searchDescription = (searchBarText) => {
     requestsArray.forEach((req) => {
 
         // see if description matches user search text
-        if (req.description.toLowerCase().includes(searchBarText.toLowerCase())){
+        if (req.description.toLowerCase().includes(searchBarText)){
             newArray.push(req)
         }
 
         // search by tutorial request type
-        else if ("tutorial".includes(searchBarText.toLowerCase())){
+        else if ("tutorial".includes(searchBarText)){
             if ('studentLevel' in req){
                 newArray.push(req)
             }
         }
 
         // search by resource request type
-        else if ("resource".includes(searchBarText.toLowerCase())){
+        else if ("resource".includes(searchBarText)){
             if ('resourceType' in req){
                 newArray.push(req)
             }
         }
 
         // see if school name matches user search text
-        else if (req.schoolName.toLowerCase().includes(searchBarText.toLowerCase())){
+        else if (req.schoolName.toLowerCase().includes(searchBarText)){
             newArray.push(req)
         }
 
         // see if city name matches user search text
-        else if (req.city.toLowerCase().includes(searchBarText.toLowerCase())){
+        else if (req.city.toLowerCase().includes(searchBarText)){
             newArray.push(req)
         }
 
         // see if request date matches user search text
-        else if (req.requestDate.includes(searchBarText.toLowerCase())){
+        else if (req.requestDate.includes(searchBarText)){
             newArray.push(req)
         }
         renderRequests(newArray)
@@ -77,7 +77,7 @@ const sortBySchool = (combinedRequestsData) => {
     })
     console.log("school sorted");
     requestContainer.innerHTML = "";
-    sortText.innerHTML = "School"
+    sortText.innerHTML = `<span class = "text-primary">School</span>`
     renderRequests(combinedRequestsData)
 }
 
@@ -90,7 +90,7 @@ const sortByCity = (combinedRequestsData) => {
     })
     console.log("city sorted");
     requestContainer.innerHTML = "";
-    sortText.innerHTML = "City"
+    sortText.innerHTML = `<span class = "text-success">City</span>`
     renderRequests(combinedRequestsData)
 }
 
@@ -98,7 +98,7 @@ const sortByCity = (combinedRequestsData) => {
 const sortByReqDate = (combinedRequestsData) => {
     combinedRequestsData.sort((a, b)=> new Date(a.requestDate) - new Date(b.requestDate))
     requestContainer.innerHTML = "";
-    sortText.innerHTML = "Request Date"
+    sortText.innerHTML = `<span class = "text-danger">Request Date</span>`
     renderRequests(combinedRequestsData)
 }
 
@@ -211,4 +211,4 @@ sortReqDateBtn.addEventListener('click', () => {
     sortByReqDate(requestsArray)
 })
 
-searchBar.addEventListener('input', () => searchDescription(searchBar.value))
+searchBar.addEventListener('input', () => searchDescription(searchBar.value.toLowerCase()))
