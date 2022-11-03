@@ -79,7 +79,7 @@
                 <div>
                   <div class="search">
                     <i class="fa fa-search"></i>
-                    <input id="searchBar" type="text" class="form-control" placeholder="Type the description of a request here...">
+                    <input id="searchBar" type="text" class="form-control" placeholder="Type the request type, description, school, city, request date of a request here...">
                     <button id="searchBtn" class="btn btn-success bg-success">Search</button>
                   </div>  
                 </div>
@@ -88,7 +88,7 @@
             <!--SORT BUTTONS-->
             <div class="d-flex justify-content-center">
                 <div class="sort-btns-container gap-5 mt-4">
-                    <p class="h4 text-center">Sort Requests by:</p>
+                    <p class="h4 text-center">Sort Requests by: <span id = sortText></span></p>
                     <button type="button" id="sortSchoolBtn" class="btn btn-md btn-primary mx-2">School</button>
                     <button type="button" id="sortCityBtn" class="btn btn-md btn-success mx-2">City</button>
                     <button type="button" id="sortReqDateBtn" class="btn btn-md btn-danger mx-2">Request Date</button>

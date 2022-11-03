@@ -96,7 +96,7 @@ if($resultT){
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="submitNewRequest.html">View Requests</a>
+                    <a class="nav-link" href="viewRequests.php">View Requests</a>
                 </li>
 
                 <li class="nav-item">
@@ -122,14 +122,14 @@ if($resultT){
       </nav>
 
       <!--Profile Information container-->
-      <main class="container-sm mb-5 rounded w-50 p-3 d-flex flex-column align-items-center">    
+      <main class="mt-5 container-sm mb-5 rounded w-50 p-3 d-flex flex-column align-items-center">    
         
         <form class="text-light" action = "includes/submitOffer.inc.php" method = "POST">
           <h2 class="text-light fw-bold bg-dark py-2 px-3 rounded-pill">Request ID: <?php echo $requestID?></h2>
           <input type="hidden" id="requestID" name="requestID" value="<?php echo $requestID?>"/>
     
           <div 
-                class=" bg-dark rounded px-5 pt-5 text-light shadow p-3"
+                class=" mt-4 bg-dark rounded px-5 pt-5 text-light shadow p-3"
                 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"    
             >
                 <?php if($type <> ""){ ?>
@@ -140,7 +140,7 @@ if($resultT){
 
                   <h5 class='mb-4'>Require Number of Resource:<span class='text-success' id='birthday-el'> <?php echo $requireNum?></span>
 
-                  <h5 class='mb-4'>Remark: <span class='text-success' id='birthday-el'><input type='text' id='remark' name='remark'/></span>
+                  <h5 class='mb-4'>Remark: <span class='text-success' id='birthday-el'><input class = "form-control mt-2" type='text' id='remark' name='remark'/></span>
                   <?php }
 
                   else{ ?>
@@ -151,7 +151,7 @@ if($resultT){
 
                     <h5 class='mb-4'>Number of Student:<span class='text-success' id='birthday-el'> <?php echo $studentNum?></span></h5>
 
-                    <h5 class='mb-4'>Remark: <span class='text-success' id='birthday-el'><input type='text' id='remark' name='remark'/></span></h5>
+                    <h5 class='mb-4'>Remark: <span class='text-success' id='birthday-el'><input class = "form-control mt-2" type='text' id='remark' name='remark'/></span></h5>
                   <?php } ?>
                   
             </div>
@@ -161,7 +161,7 @@ if($resultT){
           <div class="d-flex justify-content-center pt-4 pb-3">
             <button 
               type="submit"
-              class="btn btn-success gradient-custom-4 text-body form-control"
+              class="btn btn-success gradient-custom-4 text-light form-control"
               id="submitOffer_btn"
               name = "submitOffer_btn">
                 Submit

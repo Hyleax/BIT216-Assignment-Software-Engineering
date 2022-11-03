@@ -5,36 +5,64 @@ const requestContainer = document.querySelector('.request-container')
 const sortSchoolBtn = document.getElementById('sortSchoolBtn')
 const sortCityBtn = document.getElementById('sortCityBtn')
 const sortReqDateBtn = document.getElementById('sortReqDateBtn')
+const sortText = document.getElementById('sortText')
 
 // initializing search bar variables
-const searchBtn = document.getElementById('searchBtn')
 const searchBar = document.getElementById('searchBar')
+let data;
+const requestsArray = []
 
+// fetch viewRequest data from PHP file
+fetch(`includes/viewRequests.inc.php`)
+.then(res => res.json())
+.then(requests => {
+    requests.forEach((req) =>{
+    requestsArray.push(req)
+    renderRequests(requests)
+    })
+})
 
-// call AJAX
-let ajax = new XMLHttpRequest();
-let method = "GET";
-let url = "includes/viewRequests.inc.php";
-let async = true;
-ajax.open(method, url, true);
+// SEARCH BAR FUNCTION
+const searchDescription = (searchBarText) => {
+    const newArray = []
+    sortText.innerHTML = ""
+    requestsArray.forEach((req) => {
 
-// sending ajax request
-ajax.send();
+        // see if description matches user search text
+        if (req.description.toLowerCase().includes(searchBarText.toLowerCase())){
+            newArray.push(req)
+        }
 
-// receiving response from viewRequests.inc.php
-ajax.onreadystatechange = function() {
-    if (this.readyState == 4  && this.status == 200){
-        // converting JSON back to array
-        let combinedRequestsData = JSON.parse(this.responseText)
+        // search by tutorial request type
+        else if ("tutorial".includes(searchBarText.toLowerCase())){
+            if ('studentLevel' in req){
+                newArray.push(req)
+            }
+        }
 
-        // display all request cards in viewRequests.html
-        renderRequests(combinedRequestsData)
-        // sortSchoolBtn.addEventListener('click', sortBySchool(combinedRequestsData))
-        // sortCityBtn.addEventListener('click', sortByCity(combinedRequestsData))
-        // sortReqDateBtn.addEventListener('click', sortByReqDate(combinedRequestsData))
-    }
-    
+        // search by resource request type
+        else if ("resource".includes(searchBarText.toLowerCase())){
+            if ('resourceType' in req){
+                newArray.push(req)
+            }
+        }
 
+        // see if school name matches user search text
+        else if (req.schoolName.toLowerCase().includes(searchBarText.toLowerCase())){
+            newArray.push(req)
+        }
+
+        // see if city name matches user search text
+        else if (req.city.toLowerCase().includes(searchBarText.toLowerCase())){
+            newArray.push(req)
+        }
+
+        // see if request date matches user search text
+        else if (req.requestDate.includes(searchBarText.toLowerCase())){
+            newArray.push(req)
+        }
+        renderRequests(newArray)
+    })
 }
 
 
@@ -49,6 +77,7 @@ const sortBySchool = (combinedRequestsData) => {
     })
     console.log("school sorted");
     requestContainer.innerHTML = "";
+    sortText.innerHTML = "School"
     renderRequests(combinedRequestsData)
 }
 
@@ -61,6 +90,7 @@ const sortByCity = (combinedRequestsData) => {
     })
     console.log("city sorted");
     requestContainer.innerHTML = "";
+    sortText.innerHTML = "City"
     renderRequests(combinedRequestsData)
 }
 
@@ -68,12 +98,25 @@ const sortByCity = (combinedRequestsData) => {
 const sortByReqDate = (combinedRequestsData) => {
     combinedRequestsData.sort((a, b)=> new Date(a.requestDate) - new Date(b.requestDate))
     requestContainer.innerHTML = "";
+    sortText.innerHTML = "Request Date"
     renderRequests(combinedRequestsData)
 }
 
 
 const renderRequests = (combinedRequestsData) => {
-    
+
+    if (combinedRequestsData.length === 0){
+        requestContainer.innerHTML = "<i>there are no results...</i>"
+        requestContainer.classList.add('h2')
+        requestContainer.classList.add('text-center')
+        requestContainer.classList.add('mt-5')
+    }
+
+    else {
+        requestContainer.classList.remove('h2')
+        requestContainer.classList.remove('text-center')
+        requestContainer.classList.remove('mt-5')
+        requestContainer.innerHTML = ""
     let modalNum = 0;
     let rowCount = 0;
     let newRow;
@@ -127,9 +170,9 @@ const renderRequests = (combinedRequestsData) => {
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                    <p>${'resourceType' in request ? '' : 'Tutorial Date:'} ${'resourceType' in request ? '' : request.tutorialDate}</p>
-                    <p>${'resourceType' in request ? 'Resource Type' : 'Student Level'}: ${'resourceType' in request ? request.resourceType : request.studentLevel}</p>
-                    <p>${'resourceType' in request ? 'Required No. of devices' : 'Number of students'}: ${'resourceType' in request ? request.requireNum : request.studentNum}</p>
+                    <p>${'resourceType' in request ? '' : 'Tutorial Date:'}<b class = "text-success"> ${'resourceType' in request ? '' : request.tutorialDate}</b></p>
+                    <p>${'resourceType' in request ? 'Resource Type' : 'Student Level'}: <b class = "text-success">${'resourceType' in request ? request.resourceType : request.studentLevel}</b></p>
+                    <p>${'resourceType' in request ? 'Required No. of devices' : 'Number of students'}: <b class = "text-success">${'resourceType' in request ? request.requireNum : request.studentNum}</b></p>
                     </div>
                     <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -154,13 +197,18 @@ const renderRequests = (combinedRequestsData) => {
         // increment modalCount
         modalNum++;
     });
+    }
 }
 
 
+sortSchoolBtn.addEventListener('click', () => {
+    sortBySchool(requestsArray)
+})
+sortCityBtn.addEventListener('click', () => {
+    sortByCity(requestsArray)
+})
+sortReqDateBtn.addEventListener('click', () => {
+    sortByReqDate(requestsArray)
+})
 
-
-
-
-
-
-
+searchBar.addEventListener('input', () => searchDescription(searchBar.value))
