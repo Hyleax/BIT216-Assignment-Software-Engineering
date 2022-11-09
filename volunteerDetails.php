@@ -104,7 +104,7 @@ $age = $systemDate[0] - $birthdateArray[0];
       <!--Profile Information container-->
       <main class="container-sm mb-5 rounded w-50 p-3 d-flex flex-column align-items-center">    
         <h2 class="text-light fw-bold bg-dark py-2 px-3 rounded-pill">Volunteer Details</h2>
-            <form method="POST" action="includes/volunteerDetails.inc.php">
+            <form method="POST" action="includes/updateRequestStatus.inc.php">
                 <div 
                     class=" bg-dark rounded px-5 pt-5 text-light shadow p-3"
                     style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"    
