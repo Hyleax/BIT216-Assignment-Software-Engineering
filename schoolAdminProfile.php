@@ -111,6 +111,18 @@ else{
               echo "<h2 class = text-light>You have successfully submitted a request for aid</h2>";
             }
           }
+        
+          else if (isset($_GET['acceptOffer'])){
+            if($_GET["acceptOffer"] === "success"){
+              echo "<h2 class = text-light>You have successfully accepted an offer</h2>";
+            }
+          }
+
+          else if (isset($_GET['rejectOffer'])){
+            if($_GET["rejectOffer"] === "reject"){
+              echo "<h2 class = text-light>You have rejected an offer</h2>";
+            }
+          }
         ?>
       <img 
         src="images/defaultProfilePhoto.png" 
