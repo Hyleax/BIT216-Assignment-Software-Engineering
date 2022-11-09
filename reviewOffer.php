@@ -77,6 +77,29 @@ include("includes/profile.inc.php");
 
       <h1 class="display-1 text-center mt-2 fw-bold">REVIEW OFFER</h1>
       
+      
+      <!--CLICK TO GO BACK TO REQUEST TYPE SELECTION-->
+      <div class="d-flex justify-content-center mx-5">
+                <button 
+                  class="btn btn-danger text-light mb-5 "
+                  style="height: 50px;"
+                  id="backtoReqSelectBtn"
+                >
+                    Back to Requests
+                </button>
+                  <span id="redirecting-message"></span>
+
+                  <script>
+                    const backtoReqSelectBtn = document.getElementById('backtoReqSelectBtn')
+
+                    backtoReqSelectBtn.addEventListener('click', () => {
+                      window.location = "viewRequestSA.php";
+                    })
+                  </script>
+              </div>
+
+
+
     <form method="POST" action="volunteerDetails.php">
       <section class="intro">
   <div class="bg-image h-100" >
@@ -93,7 +116,7 @@ include("includes/profile.inc.php");
                         <th scope="col">Offer ID</th>
                         <th scope="col">Status</th>
                         <th scope="col">Offer Date</th>
-                        <th scope="col">Remark</th>
+                         <th scope="col">Remark</th>
                         
                       </tr>
                     </thead>
@@ -119,7 +142,7 @@ include("includes/profile.inc.php");
                                         <input type="hidden" id="offerID" name="offerID" value="<?php echo $row["offerID"];?>"/>
                                         <input type="hidden" id="offerDate" name="offerDate" value="<?php echo $row["offerDate"];?>"/>
                                         <input type="hidden" id="remarks" name="remarks" value="<?php echo $row["remarks"];?>"/>
-                                        <input type="hidden" id="requestID" name="requestID" value="<?php echo $_POST["resourceValue"];?>"/>
+                                        <input type="hidden" id="requestID" name="requestID" value="<?php echo $row["requestID"];?>"/>
                                     </td>
                                 </tr>
                                 
@@ -152,7 +175,7 @@ include("includes/profile.inc.php");
                                     <input type="hidden" id="offerID" name="offerID" value="<?php echo $row["offerID"];?>"/>
                                     <input type="hidden" id="offerDate" name="offerDate" value="<?php echo $row["offerDate"];?>"/>
                                     <input type="hidden" id="remarks" name="remarks" value="<?php echo $row["remarks"];?>"/>
-                                    <input type="hidden" id="requestID" name="requestID" value="<?php echo $_POST["resourceValue"];?>"/>
+                                    <input type="hidden" id="requestID" name="requestID" value="<?php echo $row["requestID"];?>"/>
                                 </td>
                             </tr>
                             <?php

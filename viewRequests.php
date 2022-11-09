@@ -79,7 +79,7 @@
                 <div>
                   <div class="search">
                     <i class="fa fa-search"></i>
-                    <input id="searchBar" type="text" class="form-control" placeholder="Type the request type, description, school, city, request date of a request here...">
+                    <input id="searchBar" type="text" spellcheck="false" class="form-control" placeholder="Type the request type, description, school, city, request date of a request here...">
                     <button id="searchBtn" class="btn btn-success bg-success">Search</button>
                   </div>  
                 </div>

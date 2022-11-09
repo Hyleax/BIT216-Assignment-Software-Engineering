@@ -73,7 +73,8 @@ if($resultT){
     <link rel="stylesheet" href="css/volunteerProfile.css">
 </head>
 
-<body style="background-color: #008B8B;">
+
+<body style="background-color: #90EE90;">
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.php">

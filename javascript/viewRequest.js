@@ -9,7 +9,6 @@ const sortText = document.getElementById('sortText')
 
 // initializing search bar variables
 const searchBar = document.getElementById('searchBar')
-let data;
 const requestsArray = []
 
 // fetch viewRequest data from PHP file

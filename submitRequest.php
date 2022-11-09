@@ -49,7 +49,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="reviewOffer.html">Review Offer</a>
+                    <a class="nav-link" href="viewRequestSA.php">Review Offer</a>
                 </li>
 
                 <li class="nav-item">
@@ -237,10 +237,12 @@
                             id="resource-description" 
                             class="form-control form-control-sm" 
                             placeholder="Enter resource description"
-                            name = "resource-description"/>
+                            name = "resource-description"
                             <?php if (isset($_GET["resourceDescription"])) {?>
                             value = "<?php echo $_GET["resourceDescription"] ?>"
                             <?php } ?>
+                            />
+                            
                     </div>
 
                     <!--Resource Type-->

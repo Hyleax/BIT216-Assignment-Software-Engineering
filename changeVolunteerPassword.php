@@ -40,7 +40,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link" href="viewRequests.html">View Requests</a>
+                    <a class="nav-link" href="viewRequests.php">View Requests</a>
                 </li>
 
                 <li class="nav-item">

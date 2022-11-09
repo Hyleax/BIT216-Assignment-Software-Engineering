@@ -61,7 +61,7 @@ else{
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="reviewOffer.html">Review Offer</a>
+                    <a class="nav-link" href="viewRequestSA.php">Review Offer</a>
                 </li>
 
                 <li class="nav-item">

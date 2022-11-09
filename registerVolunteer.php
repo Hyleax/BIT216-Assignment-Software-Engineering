@@ -150,7 +150,7 @@
                   }
                 }
               ?>
-              </div>
+                </div>
 
                 <p class="text-center text-mute mt-3">Have already an account? <a href="login.php"
                     class="fw-bold text-primary"><u>Login here</u></a></p>

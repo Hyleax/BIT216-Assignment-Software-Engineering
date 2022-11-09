@@ -101,9 +101,31 @@ $age = $systemDate[0] - $birthdateArray[0];
       </nav>
 
 
+
+
+ <!--CLICK TO GO BACK TO REQUEST TYPE SELECTION-->
+ <div class="d-flex justify-content-center mx-5">
+                <button 
+                  class="btn btn-danger text-light mb-3 mt-5 "
+                  style="height: 50px;"
+                  id="backtoReqSelectBtn"
+                >
+                    Back to Offers
+                </button>
+                  <span id="redirecting-message"></span>
+
+                  <script>
+                    const backtoReqSelectBtn = document.getElementById('backtoReqSelectBtn')
+
+                    backtoReqSelectBtn.addEventListener('click', () => {
+                      window.location = "reviewOffer.php";
+                    })
+                  </script>
+              </div>
+
       <!--Profile Information container-->
       <main class="container-sm mb-5 rounded w-50 p-3 d-flex flex-column align-items-center">    
-        <h2 class="text-light fw-bold bg-dark py-2 px-3 rounded-pill">Volunteer Details</h2>
+        <h2 class="text-light fw-bold bg-dark py-2 px-3 mb-4 rounded-pill">Volunteer Details</h2>
             <form method="POST" action="includes/updateRequestStatus.inc.php">
                 <div 
                     class=" bg-dark rounded px-5 pt-5 text-light shadow p-3"

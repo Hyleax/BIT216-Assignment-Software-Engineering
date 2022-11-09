@@ -15,7 +15,6 @@ if (isset($_POST['volunteerRegister-btn'])) {
         $email = $_POST['email'];
         $password = $_POST['password'];
         $confirmPassword = $_POST['confirmPassword'];
-        $ID = 0;
 
         // check if fields are empty
         // headers cannot be indented

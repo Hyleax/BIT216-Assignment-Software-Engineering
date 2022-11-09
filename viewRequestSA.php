@@ -86,7 +86,7 @@ $requestT = mysqli_query($con, $query2);
         </div>
       </nav>
 
-      <h1 class="display-1 text-center mt-2 fw-bold">MY REQUEST</h1>
+      <h1 class="display-1 text-center mt-2 fw-bold">MY REQUESTS</h1>
       <div class="d-flex justify-content-center">
         <div class="sort-btns-container gap-5 mt-3 mb-3">
           <form method="POST">
