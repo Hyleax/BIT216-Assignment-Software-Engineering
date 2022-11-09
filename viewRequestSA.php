@@ -129,10 +129,10 @@ $requestT = mysqli_query($con, $query2);
                               <td><?php echo $row["requestDate"];?></td>
                               <td>
                                 
-                                <button type="submit" class="btn btn-danger btn-sm px-3" id="detailsR" name="detailsR">
+                                <button type="submit" class="btn btn-danger btn-sm px-3" id="detailsR" name="detailsR" value="<?php echo $row["requestID"];?>">
                                   View Details
                                 </button>
-                                <input type="hidden" id="resourceValue" name="resourceValue" value="<?php echo $row["requestID"];?>"/>
+                                
                               </td>
                             </tr>
                           <?php  
@@ -153,7 +153,7 @@ $requestT = mysqli_query($con, $query2);
                                 <button type="submit" class="btn btn-danger btn-sm px-3" id="detailsT" name="detailsT" value="<?php echo $row["requestID"];?>">
                                   View Details
                                 </button>
-                                <input type="hidden" id="tutorialValue" name="tutorialValue" value="<?php echo $row["requestID"];?>"/>
+                                
                               </td>
                             </tr>
                             <?php
