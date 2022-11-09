@@ -86,6 +86,6 @@ if(isset($_POST["rejectBtn"])){
     mysqli_stmt_execute($stmt4);
     mysqli_stmt_close($stmt4);
 
-    header("location: ../schoolAdminProfile.php?rejectOffer=success");
+    header("location: ../schoolAdminProfile.php?rejectOffer=reject");
     exit();
 }
