@@ -100,7 +100,7 @@ include("includes/profile.inc.php");
                     <tbody>
                       <?php
                         if(isset($_POST["detailsR"])){
-                            $sqlR = "SELECT * FROM offer WHERE requestID = '".$_POST['resourceValue']."';";
+                            $sqlR = "SELECT * FROM offer WHERE requestID = '".$_POST['detailsR']."';";
                             $resultR = mysqli_query($con, $sqlR);
                         
                             if($resultR && mysqli_num_rows($resultR) > 0){
@@ -133,7 +133,7 @@ include("includes/profile.inc.php");
                         }
                     }
                     else if(isset($_POST["detailsT"])){
-                        $sqlT = "SELECT * FROM offer WHERE requestID = '".$_POST['tutorialValue']."';";
+                        $sqlT = "SELECT * FROM offer WHERE requestID = '".$_POST['detailsT']."';";
                         $resultT = mysqli_query($con, $sqlT);
 
                         if($resultT && mysqli_num_rows($resultT) > 0){
