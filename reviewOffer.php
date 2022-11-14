@@ -151,7 +151,7 @@ include("includes/profile.inc.php");
                         }
                         else if($resultR && mysqli_num_rows($resultR) > 0){
                           ?>
-                          <h5>No Offer</h5>
+                          <h5 class="text-danger text-center">No Offer</h5>
                         <?php
                         }
                     }
@@ -183,7 +183,7 @@ include("includes/profile.inc.php");
                         }
                         else if($resultT && mysqli_num_rows($resultT) == 0){
                           ?>
-                          <h5>No Offer</h5>
+                          <h5 class="text-danger text-center">No Offer</h5>
                         <?php
                         }
                     }
