@@ -113,7 +113,7 @@
         <!-- Copyright -->
       </footer>
 
-      <script src = "javascript/viewRequest.js"></script>
+      <script src = "javascript/viewRequestss.js"></script>
     
         <!-- JavaScript Bundle with Popper -->
     <script 

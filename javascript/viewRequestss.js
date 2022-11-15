@@ -21,6 +21,8 @@ fetch(`includes/viewRequests.inc.php`)
     })
 })
 
+console.log("Hello")
+
 // SEARCH BAR FUNCTION
 const searchDescription = (searchBarText) => {
     const newArray = []
@@ -130,6 +132,8 @@ const renderRequests = (combinedRequestsData) => {
             requestContainer.appendChild(newRow)
         }
 
+        if (request.requestStatus == "NEW"){
+            
         //create new column
         newCol = document.createElement('div')
         newCol.classList.add('col-lg-3')
@@ -195,6 +199,7 @@ const renderRequests = (combinedRequestsData) => {
 
         // increment modalCount
         modalNum++;
+        }
     });
     }
 }
